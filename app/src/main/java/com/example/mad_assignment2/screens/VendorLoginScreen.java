@@ -1,10 +1,12 @@
-package com.example.mad_assignment2;
+package com.example.mad_assignment2.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.mad_assignment2.R;
+
+public class VendorLoginScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
