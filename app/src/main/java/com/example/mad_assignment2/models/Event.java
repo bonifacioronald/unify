@@ -9,6 +9,7 @@ public class Event {
     String date;
     String time;
 
+
     public Event(String t, String d, String o, String b, String l, String da, String tim) {
         this.title = t;
         this.description = d;
