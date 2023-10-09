@@ -1,16 +1,16 @@
 package com.example.mad_assignment2.screens;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mad_assignment2.R;
 
-public class VendorLoginScreen extends AppCompatActivity {
+public class VendorSignUpScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vendor_sign_up_screen);
+        setContentView(R.layout.activity_vendor_login_screen);
     }
 }
