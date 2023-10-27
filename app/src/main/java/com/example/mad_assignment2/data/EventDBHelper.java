@@ -1,13 +1,17 @@
 package com.example.mad_assignment2.data;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import com.example.mad_assignment2.models.Event;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -43,7 +47,7 @@ public class EventDBHelper extends SQLiteOpenHelper {
                 .append(TABLE_NAME)
                 .append("(")
                 .append(ID_FIELD)
-                .append(" STRING PRIMARY KEY AUTOINCREMENT, ")
+                .append(" STRING PRIMARY KEY , ")
                 .append(TITLE_FIELD)
                 .append(" TEXT, ")
                 .append(DESCRIPTION_FIELD)
@@ -59,12 +63,60 @@ public class EventDBHelper extends SQLiteOpenHelper {
                 .append(TIME_FIELD)
                 .append(" TEXT, ")
                 .append(VENDOR_ID_LIST_FIELD)
-                .append(" TEXT");
+                .append(" TEXT")
+                .append(")");
+
         sqLiteDatabase.execSQL(sql.toString());
     }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+    }
+
+    public Boolean initializeEventData() throws Exception {
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        // Check if the database is empty
+        Cursor cursor = DB.rawQuery("SELECT COUNT(*) FROM " + TABLE_NAME, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+
+        Log.d("Database Initialization", "Current row count: " + count);
+
+        // If the database is empty, add initial events
+        if (count == 0) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            ArrayList<Event> initialEvents = EventInitData.initializeEventToArrayList();
+
+            // Insert initial events into the database
+            for (Event event : initialEvents) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(ID_FIELD, event.getId());
+                contentValues.put(TITLE_FIELD, event.getTitle());
+                contentValues.put(DESCRIPTION_FIELD, event.getDescription());
+                contentValues.put(ORGANIZER_FIELD, event.getOrganizer());
+                contentValues.put(BACKGROUND_LOGO_URL_FIELD, event.getBackgroundLogoUrl());
+                contentValues.put(START_DATE_FIELD, dateFormat.format(event.getStartDate()));
+                contentValues.put(END_DATE_FIELD, dateFormat.format(event.getEndDate()));
+                contentValues.put(TIME_FIELD, event.getTime());
+                contentValues.put(VENDOR_ID_LIST_FIELD, TextUtils.join(",", event.getVendorIdList()));
+
+                long result = DB.insert(TABLE_NAME, null, contentValues);
+
+                if (result == -1) {
+                    Log.d("Database Initialization", "Insert failed for event with ID: " + event.getId());
+                    return false; // If any insertion fails, return false
+                } else {
+                    Log.d("Database Initialization", "Insert successful for event with ID: " + event.getId());
+                }
+            }
+
+            return true; // All initial events inserted successfully
+        } else {
+            Log.d("Database Initialization", "Database is not empty, no need to initialize");
+            return false; // Database is not empty, no need to initialize
+        }
     }
 
     public Boolean addNewEventData(String id, String title, String description, String organizer, String backgroundLogoUrl, Date startDate, Date endDate, String time, ArrayList<String> vendorIdList) {
@@ -152,4 +204,39 @@ public class EventDBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         return cursor;
     }
+
+    public void logEventData() {
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(ID_FIELD));
+                    @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex(TITLE_FIELD));
+
+                    Log.d("Database Content", "ID: " + id + " | Title: " + title);
+
+                    // Add more fields as needed
+                } while (cursor.moveToNext());
+            } else {
+                Log.d("Database Content", "No data found in the database.");
+            }
+        } catch (Exception e) {
+            Log.e("Database Content", "Error logging data: " + e.getMessage());
+        } finally {
+            cursor.close();
+        }
+
+    }
+
+    public void clearDatabase() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        // Delete all records from the table
+        DB.delete(TABLE_NAME, null, null);
+
+        // Close the database connection
+        DB.close();
+    }
+
 }
