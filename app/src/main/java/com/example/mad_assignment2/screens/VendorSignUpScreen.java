@@ -55,7 +55,10 @@ public class VendorSignUpScreen extends AppCompatActivity {
                     // Create a new Vendor object and add it to the database
                     Vendor newVendor = new Vendor("your_id", boothName, email, password, boothDescription, category, imageUrl, 0.0, 0);
                     if (vendorDBHelper.addNewVendor(newVendor)) {
+
                         showToast("Sign-up successful!");
+                        Intent toBookEventCalendar = new Intent(VendorSignUpScreen.this, VendorBookingCalendarScreen.class);
+                        startActivity(toBookEventCalendar);
                         // You can navigate to another activity here if needed.
                     } else {
                         showToast("Sign-up failed. Please try again.");
