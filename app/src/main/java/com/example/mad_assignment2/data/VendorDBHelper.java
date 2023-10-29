@@ -235,6 +235,16 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean isEmailUsed(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " + EMAIL_FIELD + "=?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        return count > 0;
+    }
+
 
 
 

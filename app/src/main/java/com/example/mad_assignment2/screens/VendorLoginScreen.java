@@ -33,16 +33,13 @@ public class VendorLoginScreen extends AppCompatActivity {
         changeToSignUpBtn = findViewById(R.id.changeToSignUpButton);
 
         vendorDBHelper = new VendorDBHelper(this);
-        Log.d("TEST ", loginBtn.toString());
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Get email and password entered by the user
                 String enteredEmail = emailET.getText().toString();
                 String enteredPassword = passwordET.getText().toString();
-                Log.d("LOGIN ", "BUTTON PRESSED");
-                Log.d("LOGIN ", enteredEmail);
-                Log.d("LOGIN ", enteredPassword);
+
                 // Authenticate the user
                 if (vendorDBHelper.authenticateUser(enteredEmail, enteredPassword)) {
                     // Successful login
