@@ -185,5 +185,57 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         DB.close();
     }
 
+    public Vendor getVendorByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Vendor vendor = null;
+
+        // Define the columns you want to retrieve
+        String[] columns = {ID_FIELD, NAME_FIELD, EMAIL_FIELD, PASSWORD_FIELD, DESCRIPTION_FIELD, CATEGORY_FIELD, IMAGE_URL_FIELD, RATING_FIELD, BOOTH_LOCATION_FIELD};
+
+        // Define the selection criteria (WHERE clause)
+        String selection = EMAIL_FIELD + " = ?";
+        String[] selectionArgs = {email};
+
+        // Perform the query to retrieve the vendor with the specified email
+        Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            // Extract vendor information from the cursor
+            @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(ID_FIELD));
+            @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(NAME_FIELD));
+            @SuppressLint("Range") String password = cursor.getString(cursor.getColumnIndex(PASSWORD_FIELD));
+            @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DESCRIPTION_FIELD));
+            @SuppressLint("Range") String category = cursor.getString(cursor.getColumnIndex(CATEGORY_FIELD));
+            @SuppressLint("Range") String imageUrl = cursor.getString(cursor.getColumnIndex(IMAGE_URL_FIELD));
+            @SuppressLint("Range") double rating = cursor.getDouble(cursor.getColumnIndex(RATING_FIELD));
+            @SuppressLint("Range") int boothLocation = cursor.getInt(cursor.getColumnIndex(BOOTH_LOCATION_FIELD));
+
+            // Create a Vendor object
+            vendor = new Vendor(id, name, email, password, description, category, imageUrl, rating, boothLocation);
+        }
+
+        // Close the cursor and database
+        cursor.close();
+        db.close();
+
+        return vendor;
+    }
+
+    public boolean authenticateUser(String email, String password) {
+        // Retrieve user data from the database using email
+        Vendor vendor = getVendorByEmail(email);
+
+        // Check if a user with the given email exists
+        if (vendor != null) {
+            // Compare the entered password with the stored password
+            return password.equals(vendor.getPassword());
+        } else {
+            // User with the provided email doesn't exist
+            return false;
+        }
+    }
+
+
+
 
 }

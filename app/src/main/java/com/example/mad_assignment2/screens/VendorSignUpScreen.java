@@ -11,6 +11,7 @@ public class VendorSignUpScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vendor_login_screen);
+        setContentView(R.layout.activity_vendor_sign_up_screen);
+
     }
 }

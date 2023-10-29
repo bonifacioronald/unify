@@ -2,12 +2,14 @@ package com.example.mad_assignment2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.mad_assignment2.data.EventDBHelper;
 import com.example.mad_assignment2.data.VendorDBHelper;
 import com.example.mad_assignment2.models.Event;
+import com.example.mad_assignment2.screens.VendorLoginScreen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vendor_login_screen);
+        Intent myIntent = new Intent(MainActivity.this, VendorLoginScreen.class);
+        MainActivity.this.startActivity(myIntent);
     }
 }
