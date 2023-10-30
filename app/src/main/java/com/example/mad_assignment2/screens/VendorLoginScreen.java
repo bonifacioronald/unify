@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +43,8 @@ public class VendorLoginScreen extends AppCompatActivity {
                 if (vendorDBHelper.authenticateUser(enteredEmail, enteredPassword)) {
                     // Successful login
                     showToast("Login Successful");
+                    Intent toHomeScreen = new Intent(VendorLoginScreen.this, HomeScreen.class);
+                    startActivity(toHomeScreen);
                 } else {
                     // Login failed
                     showToast("Login Failed. Please check your email and password.");
