@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/home_page_background"
-    tools:context=".screens.HomePage">
+    tools:context=".screens.HomeScreen">
 
 
     <ImageButton
@@ -48,7 +48,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="284dp"
         android:text="Ongoing Event"
         android:textColor="#333333"
@@ -89,17 +89,16 @@
         android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Taylors_Logo" />
+        app:srcCompat="@drawable/taylors_logo" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-
         android:layout_marginTop="196dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_page_searchBar_bg" />
+        app:srcCompat="@drawable/home_page_search_bar_bg" />
 
     <EditText
         android:id="@+id/editTextText2"
@@ -131,8 +130,8 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="610dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="612dp"
         android:text="Upcoming Event"
         android:textSize="20sp"
         android:textStyle="bold"

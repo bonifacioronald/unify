@@ -16,7 +16,7 @@
             android:name=".screens.BoothBookingPage"
             android:exported="false" />
         <activity
-            android:name=".screens.EventPreviewPage"
+             android:name=".screens.EventPreviewScreen"
             android:exported="false" />
         <activity
             android:name=".screens.VendorSignUpScreen"

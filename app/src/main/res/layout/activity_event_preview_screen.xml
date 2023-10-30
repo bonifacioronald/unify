@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/preview_page_background"
-    tools:context=".screens.EventPreviewPage">
+    tools:context=".screens.EventPreviewScreen">
 
 
     <Button
