@@ -57,8 +57,8 @@ public class VendorSignUpScreen extends AppCompatActivity {
                     if (vendorDBHelper.addNewVendor(newVendor)) {
 
                         showToast("Sign-up successful!");
-                        Intent toBookEventCalendar = new Intent(VendorSignUpScreen.this, VendorBookingCalendarScreen.class);
-                        startActivity(toBookEventCalendar);
+                        Intent toBoothBookingCalendar = new Intent(VendorSignUpScreen.this, VendorBookingCalendarScreen.class);
+                        startActivity(toBoothBookingCalendar);
                         // You can navigate to another activity here if needed.
                     } else {
                         showToast("Sign-up failed. Please try again.");

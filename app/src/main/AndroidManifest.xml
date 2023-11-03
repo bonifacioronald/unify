@@ -25,6 +25,15 @@
             android:name=".screens.VendorLoginScreen"
             android:exported="false" />
         <activity
+            android:name=".screens.CalendarVisitorScreen"
+            android:exported="false" />
+        <activity
+            android:name=".screens.VendorBookingCalendarScreen"
+            android:exported="false" />
+        <activity
+            android:name=".screens.HomeScreen"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

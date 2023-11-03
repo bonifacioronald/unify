@@ -71,6 +71,7 @@
                 android:text="Mon"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:layout_marginHorizontal="2dp"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="0dp"
@@ -79,6 +80,7 @@
                 android:text="Tue"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:layout_marginHorizontal="2dp"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="0dp"
@@ -87,6 +89,7 @@
                 android:text="Wed"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:layout_marginHorizontal="2dp"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="0dp"
@@ -95,8 +98,8 @@
                 android:text="Thu"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:layout_marginHorizontal="2dp"
                 android:textStyle="bold"/>
-
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -104,6 +107,7 @@
                 android:gravity="center"
                 android:text="Fri"
                 android:textAlignment="center"
+                android:layout_marginHorizontal="2dp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="0dp"
@@ -112,6 +116,8 @@
                 android:text="Sat"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:layout_marginHorizontal="2dp"
+
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="0dp"
@@ -120,6 +126,8 @@
                 android:text="Sun"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:layout_marginHorizontal="2dp"
+
                 android:textStyle="bold"/>
         </TableRow>
 
@@ -226,18 +234,21 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:text="13"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="14"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="15"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center" />
 
             <Button
@@ -246,6 +257,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/red_circle"
+                android:layout_marginHorizontal="2dp"
                 android:text="16"
                 android:textSize="1.8mm"
                 android:textColor="@color/secondary"
@@ -260,6 +272,7 @@
                 android:background="@drawable/red_circle"
                 android:text="17"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -272,6 +285,7 @@
                 android:background="@drawable/red_circle"
                 android:text="18"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -284,6 +298,7 @@
                 android:background="@drawable/red_circle"
                 android:text="19"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -299,6 +314,7 @@
                 android:background="@drawable/red_circle"
                 android:text="20"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -312,6 +328,7 @@
                 android:textSize="1.8mm"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
+                android:layout_marginHorizontal="2dp"
                 app:backgroundTint="@null"/>
             <Button
                 android:id="@+id/cnsDate22Button"
@@ -323,6 +340,7 @@
                 android:textSize="1.8mm"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
+                android:layout_marginHorizontal="2dp"
                 app:backgroundTint="@null"/>
             <Button
                 android:id="@+id/cnsDate23Button"
@@ -334,24 +352,28 @@
                 android:textSize="1.8mm"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
+                android:layout_marginHorizontal="2dp"
                 app:backgroundTint="@null"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="24"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="25"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="26"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center" />
 
         </TableRow>
@@ -439,6 +461,7 @@
                 android:gravity="center"
                 android:text="Mon"
                 android:textAlignment="center"
+                android:layout_marginHorizontal="2dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -448,6 +471,7 @@
                 android:gravity="center"
                 android:text="Tue"
                 android:textAlignment="center"
+                android:layout_marginHorizontal="2dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -456,6 +480,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Wed"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center"
                 android:textStyle="bold" />
 
@@ -465,6 +490,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Thu"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center"
                 android:textStyle="bold" />
 
@@ -474,6 +500,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Fri"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center"
                 android:textStyle="bold" />
 
@@ -483,6 +510,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Sat"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center"
                 android:textStyle="bold" />
 
@@ -492,6 +520,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Sun"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center"
                 android:textStyle="bold" />
         </TableRow>
@@ -558,6 +587,7 @@
                 android:background="@drawable/red_circle"
                 android:text="4"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -570,6 +600,7 @@
                 android:background="@drawable/red_circle"
                 android:text="5"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -580,8 +611,9 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/red_circle"
-                android:text="4"
+                android:text="6"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -594,6 +626,7 @@
                 android:background="@drawable/red_circle"
                 android:text="7"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -606,6 +639,7 @@
                 android:background="@drawable/red_circle"
                 android:text="8"
                 android:textSize="1.8mm"
+                android:layout_marginHorizontal="2dp"
                 android:textColor="@color/secondary"
                 android:textAlignment="center"
                 app:backgroundTint="@null"/>
@@ -615,6 +649,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:text="9"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center" />
 
             <TextView
@@ -622,6 +657,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:text="10"
+                android:layout_marginHorizontal="2dp"
                 android:textAlignment="center" />
         </TableRow>
 

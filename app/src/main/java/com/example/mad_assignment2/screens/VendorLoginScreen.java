@@ -43,8 +43,8 @@ public class VendorLoginScreen extends AppCompatActivity {
                 if (vendorDBHelper.authenticateUser(enteredEmail, enteredPassword)) {
                     // Successful login
                     showToast("Login Successful");
-                    Intent toHomeScreen = new Intent(VendorLoginScreen.this, HomeScreen.class);
-                    startActivity(toHomeScreen);
+                    Intent toBoothBookingCalendar = new Intent(VendorLoginScreen.this, VendorBookingCalendarScreen.class);
+                    startActivity(toBoothBookingCalendar);
                 } else {
                     // Login failed
                     showToast("Login Failed. Please check your email and password.");
