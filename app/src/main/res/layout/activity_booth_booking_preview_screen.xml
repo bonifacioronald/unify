@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/preview_page_background"
-    tools:context=".screens.BoothBookingPage">
+    tools:context=".screens.BoothBookingPreviewScreen">
 
 
 
@@ -24,7 +24,7 @@
         android:layout_width="231dp"
         android:layout_height="82dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="196dp"
         android:fontFamily="sans-serif-black"
         android:text="Club &amp; Society Festival"
         android:textColor="#FFFFFF"
