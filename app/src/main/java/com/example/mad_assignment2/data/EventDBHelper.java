@@ -160,17 +160,17 @@ public class EventDBHelper extends SQLiteOpenHelper {
         DB.close();
     }
 
-    public Boolean addVendorToEvent(String eventId, String newVendorId) {
+    public boolean addVendorToEvent(int eventId, int newVendorId) {
         SQLiteDatabase DB = this.getWritableDatabase();
 
         // First, retrieve the existing vendorIdList for the event with the given ID
-        Cursor cursor = DB.rawQuery("SELECT " + VENDOR_ID_LIST_FIELD + " FROM " + TABLE_NAME + " WHERE " + ID_FIELD + "=?", new String[]{eventId});
+        Cursor cursor = DB.rawQuery("SELECT " + VENDOR_ID_LIST_FIELD + " FROM " + TABLE_NAME + " WHERE " + ID_FIELD + "=?", new String[]{String.valueOf(eventId)});
 
         if (cursor.moveToFirst()) {
             String existingVendorIdList = cursor.getString(0);
 
             if (existingVendorIdList == null) {
-                existingVendorIdList = newVendorId;
+                existingVendorIdList = String.valueOf(newVendorId);
             } else {
                 // Append the new vendor ID to the existing list
                 existingVendorIdList += "," + newVendorId;
@@ -179,9 +179,9 @@ public class EventDBHelper extends SQLiteOpenHelper {
             // Update the vendorIdList in the database
             ContentValues contentValues = new ContentValues();
             contentValues.put(VENDOR_ID_LIST_FIELD, existingVendorIdList);
-            long result = DB.update(TABLE_NAME, contentValues, ID_FIELD + "=?", new String[]{eventId});
+            int result = DB.update(TABLE_NAME, contentValues, ID_FIELD + "=?", new String[]{String.valueOf(eventId)});
 
-            if (result != -1) {
+            if (result > 0) {
                 return true; // Successfully added the new vendor ID to the event
             }
         }

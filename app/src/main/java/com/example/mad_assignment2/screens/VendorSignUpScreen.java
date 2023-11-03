@@ -53,7 +53,7 @@ public class VendorSignUpScreen extends AppCompatActivity {
                     showToast("Email is already in use. Please use a different email.");
                 } else {
                     // Create a new Vendor object and add it to the database
-                    Vendor newVendor = new Vendor("your_id", boothName, email, password, boothDescription, category, imageUrl, 0.0, 0);
+                    Vendor newVendor = new Vendor(boothName, email, password, boothDescription, category, imageUrl, 0.0, 0);
                     if (vendorDBHelper.addNewVendor(newVendor)) {
 
                         showToast("Sign-up successful!");

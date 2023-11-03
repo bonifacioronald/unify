@@ -25,12 +25,14 @@ public class EventInitData {
                 "8:00 AM - 5:00 PM",
                 new ArrayList<String>());
 
-        ArrayList<String> cnsVendorIdList = new ArrayList<>();
-        for (int i = 1; i <= 6; i++) {
-            cnsVendorIdList.add(String.valueOf(i));
-        }
-
-        cnsFestival.setVendorIdList(cnsVendorIdList);
+        ArrayList<String> cnsVendorList = new ArrayList<>();
+        cnsVendorList.add("Taylor's Basketball Club");
+        cnsVendorList.add("Taylor's Volleyball Club");
+        cnsVendorList.add("Taylor's Cooking Club");
+        cnsVendorList.add("KFC");
+        cnsVendorList.add("McDonald's");
+        cnsVendorList.add("Starbucks");
+        cnsFestival.setVendorIdList(cnsVendorList);
 
         Event traditionalFoodFestival = new Event(1,
                 "Traditional Food Festival",
@@ -43,10 +45,12 @@ public class EventInitData {
                 new ArrayList<>());
 
         ArrayList<String> traditionalFoodVendorIdList = new ArrayList<>();
-        for (int i = 7; i <= 12; i++) {
-            traditionalFoodVendorIdList.add(String.valueOf(i));
-        }
-
+        traditionalFoodVendorIdList.add("Nasi Lemak Delights");
+        traditionalFoodVendorIdList.add("Roti Canai Corner");
+        traditionalFoodVendorIdList.add("Satay Paradise");
+        traditionalFoodVendorIdList.add("Laksa Haven");
+        traditionalFoodVendorIdList.add("Hainanese Chicken Rice Delights");
+        traditionalFoodVendorIdList.add("Cendol Oasis");
         traditionalFoodFestival.setVendorIdList(traditionalFoodVendorIdList);
 
         initialEventList.add(cnsFestival);

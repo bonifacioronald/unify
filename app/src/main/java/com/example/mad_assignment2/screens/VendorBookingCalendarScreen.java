@@ -43,7 +43,7 @@ public class VendorBookingCalendarScreen extends AppCompatActivity {
         cnsDate16Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  db.addVendorToEvent()
+                db.addVendorToEvent(1, 1);
             }
         });
     }
