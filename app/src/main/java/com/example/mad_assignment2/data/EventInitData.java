@@ -34,7 +34,7 @@ public class EventInitData {
         cnsVendorList.add("Starbucks");
         cnsFestival.setVendorIdList(cnsVendorList);
 
-        Event traditionalFoodFestival = new Event(1,
+        Event traditionalFoodFestival = new Event(2,
                 "Traditional Food Festival",
                 "Taylor's University celebrates its diverse culture with a traditional food festival featuring a tantalizing array of authentic dishes from around the world",
                 "TU Student Council",
