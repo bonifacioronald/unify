@@ -3,6 +3,7 @@ package com.example.mad_assignment2.data;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -19,8 +20,7 @@ public class VendorDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "VendorDB";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "Vendor";
-    private static final String ID_FIELD = "id";
-    private static final String NAME_FIELD = "name";
+    private static final String NAME_FIELD = "name"; // Set name as the primary key
     private static final String EMAIL_FIELD = "email";
     private static final String PASSWORD_FIELD = "password";
     private static final String DESCRIPTION_FIELD = "description";
@@ -36,8 +36,7 @@ public class VendorDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableSQL = "CREATE TABLE " + TABLE_NAME + " (" +
-                ID_FIELD + " STRING PRIMARY KEY, " +
-                NAME_FIELD + " TEXT, " +
+                NAME_FIELD + " TEXT PRIMARY KEY, " + // Set name as the primary key
                 EMAIL_FIELD + " TEXT, " +
                 PASSWORD_FIELD + " TEXT, " +
                 DESCRIPTION_FIELD + " TEXT, " +
@@ -73,7 +72,6 @@ public class VendorDBHelper extends SQLiteOpenHelper {
             // Insert initial vendors into the database
             for (Vendor vendor : initialVendors) {
                 ContentValues contentValues = new ContentValues();
-                contentValues.put(ID_FIELD, vendor.getId());
                 contentValues.put(NAME_FIELD, vendor.getName());
                 contentValues.put(EMAIL_FIELD, vendor.getEmail());
                 contentValues.put(PASSWORD_FIELD, vendor.getPassword());
@@ -86,10 +84,10 @@ public class VendorDBHelper extends SQLiteOpenHelper {
                 long result = DB.insert(TABLE_NAME, null, contentValues);
 
                 if (result == -1) {
-                    Log.d("Database Initialization", "Insert failed for vendor with ID: " + vendor.getId());
+                    Log.d("Database Initialization", "Insert failed for vendor with name: " + vendor.getName());
                     return false; // If any insertion fails, return false
                 } else {
-                    Log.d("Database Initialization", "Insert successful for vendor with ID: " + vendor.getId());
+                    Log.d("Database Initialization", "Insert successful for vendor with name: " + vendor.getName());
                 }
             }
 
@@ -100,11 +98,48 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor getVendorData() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return cursor;
+    }
+
+    public void clearDatabase() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        DB.delete(TABLE_NAME, null, null);
+        DB.close();
+    }
+
+    public void logVendorData() {
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(NAME_FIELD));
+                    @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex(EMAIL_FIELD));
+
+                    Log.d("Database Content", "Name: " + name + " | Email: " + email);
+
+                    // Add more fields as needed
+                } while (cursor.moveToNext());
+            } else {
+                Log.d("Database Content", "No data found in the database.");
+            }
+        } catch (Exception e) {
+            Log.e("Database Content", "Error logging data: " + e.getMessage());
+        } finally {
+            cursor.close();
+        }
+    }
+
+    //
+// SIGNUP, LOGIN, BOOKING METHODS
+//
     public boolean addNewVendor(Vendor vendor) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(ID_FIELD, vendor.getId());
-        values.put(NAME_FIELD, vendor.getName());
+        values.put(NAME_FIELD, vendor.getName()); // Use name as primary key
         values.put(EMAIL_FIELD, vendor.getEmail());
         values.put(PASSWORD_FIELD, vendor.getPassword());
         values.put(DESCRIPTION_FIELD, vendor.getDescription());
@@ -119,78 +154,12 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean updateVendorData(Vendor vendor) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(NAME_FIELD, vendor.getName());
-        values.put(EMAIL_FIELD, vendor.getEmail());
-        values.put(PASSWORD_FIELD, vendor.getPassword());
-        values.put(DESCRIPTION_FIELD, vendor.getDescription());
-        values.put(CATEGORY_FIELD, vendor.getCategory());
-        values.put(IMAGE_URL_FIELD, vendor.getImageUrl());
-        values.put(RATING_FIELD, vendor.getRating());
-        values.put(BOOTH_LOCATION_FIELD, vendor.getBoothLocation());
-
-        int result = db.update(TABLE_NAME, values, ID_FIELD + " = ?", new String[]{vendor.getId()});
-        db.close();
-
-        return result > 0;
-    }
-
-    public boolean deleteVendor(String id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        int result = db.delete(TABLE_NAME, ID_FIELD + " = ?", new String[]{id});
-        db.close();
-
-        return result > 0;
-    }
-
-    public Cursor getVendorData() {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        // Check if the event with the given ID exists
-        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        return cursor;
-    }
-
-    public void logVendorData() {
-        SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        try {
-            if (cursor.moveToFirst()) {
-                do {
-                    @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(ID_FIELD));
-                    @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(NAME_FIELD));
-
-                    Log.d("Database Content", "ID: " + id + " | Name: " + name);
-
-                    // Add more fields as needed
-                } while (cursor.moveToNext());
-            } else {
-                Log.d("Database Content", "No data found in the database.");
-            }
-        } catch (Exception e) {
-            Log.e("Database Content", "Error logging data: " + e.getMessage());
-        } finally {
-            cursor.close();
-        }
-    }
-
-    public void clearDatabase() {
-        SQLiteDatabase DB = this.getWritableDatabase();
-
-        // Delete all records from the table
-        DB.delete(TABLE_NAME, null, null);
-
-        // Close the database connection
-        DB.close();
-    }
-
     public Vendor getVendorByEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         Vendor vendor = null;
 
         // Define the columns you want to retrieve
-        String[] columns = {ID_FIELD, NAME_FIELD, EMAIL_FIELD, PASSWORD_FIELD, DESCRIPTION_FIELD, CATEGORY_FIELD, IMAGE_URL_FIELD, RATING_FIELD, BOOTH_LOCATION_FIELD};
+        String[] columns = {NAME_FIELD, EMAIL_FIELD, PASSWORD_FIELD, DESCRIPTION_FIELD, CATEGORY_FIELD, IMAGE_URL_FIELD, RATING_FIELD, BOOTH_LOCATION_FIELD};
 
         // Define the selection criteria (WHERE clause)
         String selection = EMAIL_FIELD + " = ?";
@@ -201,7 +170,6 @@ public class VendorDBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             // Extract vendor information from the cursor
-            @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(ID_FIELD));
             @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(NAME_FIELD));
             @SuppressLint("Range") String password = cursor.getString(cursor.getColumnIndex(PASSWORD_FIELD));
             @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DESCRIPTION_FIELD));
@@ -211,7 +179,7 @@ public class VendorDBHelper extends SQLiteOpenHelper {
             @SuppressLint("Range") int boothLocation = cursor.getInt(cursor.getColumnIndex(BOOTH_LOCATION_FIELD));
 
             // Create a Vendor object
-            vendor = new Vendor(id, name, email, password, description, category, imageUrl, rating, boothLocation);
+            vendor = new Vendor(name, email, password, description, category, imageUrl, rating, boothLocation);
         }
 
         // Close the cursor and database
@@ -244,8 +212,4 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         cursor.close();
         return count > 0;
     }
-
-
-
-
 }

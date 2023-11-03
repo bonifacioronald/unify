@@ -47,7 +47,7 @@ public class EventDBHelper extends SQLiteOpenHelper {
                 .append(TABLE_NAME)
                 .append("(")
                 .append(ID_FIELD)
-                .append(" STRING PRIMARY KEY , ")
+                .append(" INTEGER PRIMARY KEY AUTOINCREMENT, ")
                 .append(TITLE_FIELD)
                 .append(" TEXT, ")
                 .append(DESCRIPTION_FIELD)
@@ -119,85 +119,6 @@ public class EventDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Boolean addNewEventData(String id, String title, String description, String organizer, String backgroundLogoUrl, Date startDate, Date endDate, String time, ArrayList<String> vendorIdList) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-
-        // Put values into the ContentValues
-        contentValues.put(ID_FIELD, id);
-        contentValues.put(TITLE_FIELD, title);
-        contentValues.put(DESCRIPTION_FIELD, description);
-        contentValues.put(ORGANIZER_FIELD, organizer);
-        contentValues.put(BACKGROUND_LOGO_URL_FIELD, backgroundLogoUrl);
-        contentValues.put(START_DATE_FIELD, dateFormat.format(startDate));
-        contentValues.put(END_DATE_FIELD, dateFormat.format(endDate));
-        contentValues.put(TIME_FIELD, time);
-
-        // Convert ArrayList of vendor IDs to a comma-separated String
-        String vendorIdString = TextUtils.join(",", vendorIdList);
-        contentValues.put(VENDOR_ID_LIST_FIELD, vendorIdString);
-
-        long result = DB.insert(TABLE_NAME, null, contentValues);
-
-        return result != -1; // Return true if the insert was successful, otherwise false
-    }
-
-    public Boolean updateEventData(String id, String title, String description, String organizer, String backgroundLogoUrl, Date startDate, Date endDate, String time, ArrayList<String> vendorIdList) {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-
-        // Put values into the ContentValues
-        contentValues.put(TITLE_FIELD, title);
-        contentValues.put(DESCRIPTION_FIELD, description);
-        contentValues.put(ORGANIZER_FIELD, organizer);
-        contentValues.put(BACKGROUND_LOGO_URL_FIELD, backgroundLogoUrl);
-
-        // Format dates as strings
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        contentValues.put(START_DATE_FIELD, dateFormat.format(startDate));
-        contentValues.put(END_DATE_FIELD, dateFormat.format(endDate));
-
-        contentValues.put(TIME_FIELD, time);
-
-        // Convert ArrayList of vendor IDs to a comma-separated String
-        String vendorIdString = TextUtils.join(",", vendorIdList);
-        contentValues.put(VENDOR_ID_LIST_FIELD, vendorIdString);
-
-        // Check if the event with the given ID exists
-        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE id = ?", new String[] {id});
-
-        if (cursor.getCount() > 0) {
-            // Event with the given ID exists, update it
-            long result = DB.update(TABLE_NAME, contentValues, "id=?", new String[] {id});
-
-            if (result != -1) {
-                return true;
-            }
-        }
-
-        // Event not found or update failed
-        return false;
-    }
-
-    public Boolean deleteEventData(String id) {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        // Check if the event with the given ID exists
-        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE id = ?", new String[] {id});
-
-        if (cursor.getCount() > 0) {
-            // Event with the given ID exists, update it
-            long result = DB.delete(TABLE_NAME,"id=?", new String[] {id});
-
-            if (result != -1) {
-                return true;
-            }
-        }
-
-        // Event not found or update failed
-        return false;
-    }
-
     public Cursor getEventData() {
         SQLiteDatabase DB = this.getWritableDatabase();
         // Check if the event with the given ID exists
@@ -237,6 +158,35 @@ public class EventDBHelper extends SQLiteOpenHelper {
 
         // Close the database connection
         DB.close();
+    }
+
+    public boolean addVendorToEvent(int eventId, int newVendorId) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        // First, retrieve the existing vendorIdList for the event with the given ID
+        Cursor cursor = DB.rawQuery("SELECT " + VENDOR_ID_LIST_FIELD + " FROM " + TABLE_NAME + " WHERE " + ID_FIELD + "=?", new String[]{String.valueOf(eventId)});
+
+        if (cursor.moveToFirst()) {
+            String existingVendorIdList = cursor.getString(0);
+
+            if (existingVendorIdList == null) {
+                existingVendorIdList = String.valueOf(newVendorId);
+            } else {
+                // Append the new vendor ID to the existing list
+                existingVendorIdList += "," + newVendorId;
+            }
+
+            // Update the vendorIdList in the database
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(VENDOR_ID_LIST_FIELD, existingVendorIdList);
+            int result = DB.update(TABLE_NAME, contentValues, ID_FIELD + "=?", new String[]{String.valueOf(eventId)});
+
+            if (result > 0) {
+                return true; // Successfully added the new vendor ID to the event
+            }
+        }
+
+        return false; // Failed to add the new vendor ID
     }
 
 }

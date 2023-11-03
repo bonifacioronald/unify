@@ -15,7 +15,7 @@ public class VendorInitData {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         ArrayList<Vendor> initialVendorList = new ArrayList<>();
 
-        Vendor basketballClub = new Vendor("1",
+        Vendor basketballClub = new Vendor(
                 "Taylor's Basketball Club",
                 "tbc@gmail.com",
                 "tbc",
@@ -25,7 +25,7 @@ public class VendorInitData {
                 4,
                 1);
 
-        Vendor volleyballClub = new Vendor("2",
+        Vendor volleyballClub = new Vendor(
                 "Taylor's Volleyball Club",
                 "tvc@gmail.com",
                 "tvc",
@@ -35,7 +35,7 @@ public class VendorInitData {
                 4.5,
                 2);
 
-        Vendor cookingClub = new Vendor("3",
+        Vendor cookingClub = new Vendor(
                 "Taylor's Cooking Club",
                 "tcc@gmail.com",
                 "tcc",
@@ -45,7 +45,7 @@ public class VendorInitData {
                 4.2,
                 3);
 
-        Vendor kfc = new Vendor("4",
+        Vendor kfc = new Vendor(
                 "KFC",
                 "kfc@gmail.com",
                 "kfc",
@@ -55,7 +55,7 @@ public class VendorInitData {
                 4.7,
                 4);
 
-        Vendor mcdonalds = new Vendor("5",
+        Vendor mcdonalds = new Vendor(
                 "McDonald's",
                 "mcdonalds@gmail.com",
                 "mcdonalds",
@@ -65,7 +65,7 @@ public class VendorInitData {
                 4.5,
                 5);
 
-        Vendor starbucks = new Vendor("6",
+        Vendor starbucks = new Vendor(
                 "Starbucks",
                 "starbucks@gmail.com",
                 "starbucks",
@@ -75,7 +75,7 @@ public class VendorInitData {
                 4.8,
                 6);
 
-        Vendor nasiLemakDelights = new Vendor("7",
+        Vendor nasiLemakDelights = new Vendor(
                 "Nasi Lemak Delights",
                 "nasilemak@gmail.com",
                 "nasilemak123",
@@ -85,7 +85,7 @@ public class VendorInitData {
                 4.6,
                 1);
 
-        Vendor rotiCanaiCorner = new Vendor("8",
+        Vendor rotiCanaiCorner = new Vendor(
                 "Roti Canai Corner",
                 "roticanai@gmail.com",
                 "roticanai456",
@@ -95,7 +95,7 @@ public class VendorInitData {
                 4.7,
                 2);
 
-        Vendor satayParadise = new Vendor("9",
+        Vendor satayParadise = new Vendor(
                 "Satay Paradise",
                 "satay@gmail.com",
                 "satay789",
@@ -105,7 +105,7 @@ public class VendorInitData {
                 4.5,
                 3);
 
-        Vendor laksaHaven = new Vendor("10",
+        Vendor laksaHaven = new Vendor(
                 "Laksa Haven",
                 "laksa@gmail.com",
                 "laksa101",
@@ -115,7 +115,7 @@ public class VendorInitData {
                 4.4,
                 4);
 
-        Vendor hainaneseChickenRice = new Vendor("11",
+        Vendor hainaneseChickenRice = new Vendor(
                 "Hainanese Chicken Rice Delights",
                 "chickenrice@gmail.com",
                 "chickenrice2022",
@@ -125,7 +125,7 @@ public class VendorInitData {
                 4.5,
                 5);
 
-        Vendor cendolOasis = new Vendor("12",
+        Vendor cendolOasis = new Vendor(
                 "Cendol Oasis",
                 "cendol@gmail.com",
                 "cendol567",

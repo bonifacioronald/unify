@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.mad_assignment2.R;
 
-public class BoothBookingPage extends AppCompatActivity {
+public class BoothBookingPreviewScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booth_booking_page);
+        setContentView(R.layout.activity_booth_booking_preview_screen);
     }
 }
