@@ -1,7 +1,7 @@
 package com.example.mad_assignment2.models;
 
 public class Vendor {
-    private String id;
+    private int id; // Change data type to int
     private String name;
     private String email;
     private String password;
@@ -11,7 +11,7 @@ public class Vendor {
     private double rating;
     private int boothLocation;
 
-    public Vendor(String id, String name, String email, String password, String description, String category, String imageUrl, double rating, int boothLocation) {
+    public Vendor(int id, String name, String email, String password, String description, String category, String imageUrl, double rating, int boothLocation) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -23,11 +23,11 @@ public class Vendor {
         this.boothLocation = boothLocation;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

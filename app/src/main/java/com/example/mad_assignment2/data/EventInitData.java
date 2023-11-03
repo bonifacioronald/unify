@@ -15,7 +15,7 @@ public class EventInitData {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         ArrayList<Event> initialEventList = new ArrayList<>();
 
-        Event cnsFestival = new Event("1",
+        Event cnsFestival = new Event(1,
                 "Club & Society Festival",
                 "Browse through and learn more about Taylor’s University’s diverse clubs and societies. Free of charge!",
                 "Orientation Leaders",
@@ -32,7 +32,7 @@ public class EventInitData {
 
         cnsFestival.setVendorIdList(cnsVendorIdList);
 
-        Event traditionalFoodFestival = new Event("2",
+        Event traditionalFoodFestival = new Event(1,
                 "Traditional Food Festival",
                 "Taylor's University celebrates its diverse culture with a traditional food festival featuring a tantalizing array of authentic dishes from around the world",
                 "TU Student Council",

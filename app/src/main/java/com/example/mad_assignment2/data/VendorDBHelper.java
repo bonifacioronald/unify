@@ -3,6 +3,7 @@ package com.example.mad_assignment2.data;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -36,7 +37,7 @@ public class VendorDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableSQL = "CREATE TABLE " + TABLE_NAME + " (" +
-                ID_FIELD + " STRING PRIMARY KEY, " +
+                ID_FIELD + " INTEGER PRIMARY KEY AUTOINCREMENT, " +  // Auto-incrementing primary key
                 NAME_FIELD + " TEXT, " +
                 EMAIL_FIELD + " TEXT, " +
                 PASSWORD_FIELD + " TEXT, " +
@@ -100,56 +101,21 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addNewVendor(Vendor vendor) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(ID_FIELD, vendor.getId());
-        values.put(NAME_FIELD, vendor.getName());
-        values.put(EMAIL_FIELD, vendor.getEmail());
-        values.put(PASSWORD_FIELD, vendor.getPassword());
-        values.put(DESCRIPTION_FIELD, vendor.getDescription());
-        values.put(CATEGORY_FIELD, vendor.getCategory());
-        values.put(IMAGE_URL_FIELD, vendor.getImageUrl());
-        values.put(RATING_FIELD, vendor.getRating());
-        values.put(BOOTH_LOCATION_FIELD, vendor.getBoothLocation());
-
-        long result = db.insert(TABLE_NAME, null, values);
-        db.close();
-
-        return result != -1;
-    }
-
-    public boolean updateVendorData(Vendor vendor) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(NAME_FIELD, vendor.getName());
-        values.put(EMAIL_FIELD, vendor.getEmail());
-        values.put(PASSWORD_FIELD, vendor.getPassword());
-        values.put(DESCRIPTION_FIELD, vendor.getDescription());
-        values.put(CATEGORY_FIELD, vendor.getCategory());
-        values.put(IMAGE_URL_FIELD, vendor.getImageUrl());
-        values.put(RATING_FIELD, vendor.getRating());
-        values.put(BOOTH_LOCATION_FIELD, vendor.getBoothLocation());
-
-        int result = db.update(TABLE_NAME, values, ID_FIELD + " = ?", new String[]{vendor.getId()});
-        db.close();
-
-        return result > 0;
-    }
-
-    public boolean deleteVendor(String id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        int result = db.delete(TABLE_NAME, ID_FIELD + " = ?", new String[]{id});
-        db.close();
-
-        return result > 0;
-    }
-
     public Cursor getVendorData() {
         SQLiteDatabase DB = this.getWritableDatabase();
         // Check if the event with the given ID exists
         Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         return cursor;
+    }
+
+    public void clearDatabase() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+
+        // Delete all records from the table
+        DB.delete(TABLE_NAME, null, null);
+
+        // Close the database connection
+        DB.close();
     }
 
     public void logVendorData() {
@@ -175,14 +141,25 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void clearDatabase() {
-        SQLiteDatabase DB = this.getWritableDatabase();
+    //
+    // SIGNUP, LOGIN, BOOKING METHODS
+    //
+    public boolean addNewVendor(Vendor vendor) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(NAME_FIELD, vendor.getName());
+        values.put(EMAIL_FIELD, vendor.getEmail());
+        values.put(PASSWORD_FIELD, vendor.getPassword());
+        values.put(DESCRIPTION_FIELD, vendor.getDescription());
+        values.put(CATEGORY_FIELD, vendor.getCategory());
+        values.put(IMAGE_URL_FIELD, vendor.getImageUrl());
+        values.put(RATING_FIELD, vendor.getRating());
+        values.put(BOOTH_LOCATION_FIELD, vendor.getBoothLocation());
 
-        // Delete all records from the table
-        DB.delete(TABLE_NAME, null, null);
+        long result = db.insert(TABLE_NAME, null, values);
+        db.close();
 
-        // Close the database connection
-        DB.close();
+        return result != -1;
     }
 
     public Vendor getVendorByEmail(String email) {
@@ -201,7 +178,7 @@ public class VendorDBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             // Extract vendor information from the cursor
-            @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(ID_FIELD));
+            @SuppressLint("Range") Integer id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
             @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(NAME_FIELD));
             @SuppressLint("Range") String password = cursor.getString(cursor.getColumnIndex(PASSWORD_FIELD));
             @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DESCRIPTION_FIELD));
