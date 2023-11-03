@@ -83,7 +83,7 @@ public class VendorInitData {
                 "Food & Beverage",
                 "https://www.yummytummyaarthi.com/wp-content/uploads/2023/03/3f0d98a9-c59f-4dac-8071-4087d82aa365-scaled.jpeg", // You can replace with the actual image URL
                 4.6,
-                7);
+                1);
 
         Vendor rotiCanaiCorner = new Vendor("8",
                 "Roti Canai Corner",
@@ -93,7 +93,7 @@ public class VendorInitData {
                 "Food & Beverage",
                 "https://www.kuali.com/wp-content/uploads/2015/05/Roti-canai.jpg", // You can replace with the actual image URL
                 4.7,
-                8);
+                2);
 
         Vendor satayParadise = new Vendor("9",
                 "Satay Paradise",
@@ -103,7 +103,7 @@ public class VendorInitData {
                 "Food & Beverage",
                 "https://media-cdn2.greatbritishchefs.com/media/p5abv3mz/img82070.whqc_1426x713q80.jpg", // You can replace with the actual image URL
                 4.5,
-                9);
+                3);
 
         Vendor laksaHaven = new Vendor("10",
                 "Laksa Haven",
@@ -113,7 +113,7 @@ public class VendorInitData {
                 "Food & Beverage",
                 "https://rasamalaysia.com/wp-content/uploads/2011/07/curry-laksa-thumb.jpg", // You can replace with the actual image URL
                 4.4,
-                10);
+                4);
 
         Vendor hainaneseChickenRice = new Vendor("11",
                 "Hainanese Chicken Rice Delights",
@@ -123,7 +123,7 @@ public class VendorInitData {
                 "Food & Beverage",
                 "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/154660.jpg", // You can replace with the actual image URL
                 4.5,
-                11);
+                5);
 
         Vendor cendolOasis = new Vendor("12",
                 "Cendol Oasis",
@@ -133,7 +133,7 @@ public class VendorInitData {
                 "Food & Beverage",
                 "https://sm.mashable.com/mashable_sea/photo/default/cendol-melaka-food-blog-1_64sj.jpg", // You can replace with the actual image URL
                 4.3,
-                12);
+                6);
 
         initialVendorList.add(basketballClub);
         initialVendorList.add(volleyballClub);
