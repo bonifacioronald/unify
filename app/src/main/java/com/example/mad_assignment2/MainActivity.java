@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         super.onCreate(savedInstanceState);
-        Intent myIntent = new Intent(MainActivity.this, VendorBookingCalendarScreen.class);
+        Intent myIntent = new Intent(MainActivity.this, VendorLoginScreen.class);
         MainActivity.this.startActivity(myIntent);
     }
 }

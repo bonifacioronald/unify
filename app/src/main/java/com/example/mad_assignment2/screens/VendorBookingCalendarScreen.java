@@ -2,7 +2,9 @@ package com.example.mad_assignment2.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -38,6 +40,10 @@ public class VendorBookingCalendarScreen extends AppCompatActivity {
         tffDate8Button = findViewById(R.id.tffDate8Button);
 
         ImageButton backButton = findViewById(R.id.backButton);
+
+        Intent intent = getIntent();
+        String vendorName = intent.getStringExtra("vendorname");
+        Log.d("LOGIN", vendorName);
 
 
         cnsDate16Button.setOnClickListener(new View.OnClickListener() {
