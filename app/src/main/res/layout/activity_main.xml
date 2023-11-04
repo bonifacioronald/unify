@@ -136,10 +136,7 @@
         android:layout_marginStart="9dp"
         android:layout_marginTop="13dp"
         android:text="Inside Scoop is a popular ice \n cream maker known for its \n
-artisanal approach to crafting \n delectable frozen treats. Their \n
-innovative flavors and use of \n high-quality ingredients have \n made them a favorite among
-\n ice cream enthusiasts!!
-"
+        artisanal approach to crafting \n delectable frozen treats."
         android:textAlignment="center"
         android:textColor="@color/text"
         android:textSize="11sp"
@@ -151,15 +148,28 @@ innovative flavors and use of \n high-quality ingredients have \n made them a fa
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/avgRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ratingBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:text="Average Rating: 0"
+        android:textSize="10sp"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        tools:layout_editor_absoluteX="240dp"
+        tools:ignore="MissingConstraints" />
+
     <RatingBar
-        android:id="@+id/ratingBar1"
+        android:id="@+id/ratingBar"
         android:layout_width="238dp"
         android:layout_height="43dp"
         android:layout_marginTop="113dp"
-
         android:scaleX="0.5"
-
         android:scaleY="0.5"
+        android:numStars="5"
+        android:stepSize="1.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.934"
