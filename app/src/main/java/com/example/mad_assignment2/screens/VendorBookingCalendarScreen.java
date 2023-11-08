@@ -32,7 +32,6 @@ public class VendorBookingCalendarScreen extends AppCompatActivity {
 
         Intent intent = getIntent();
         vendorName = intent.getStringExtra("vendorname");
-        Log.d("LOGIN", vendorName);
 
         // Initialize all date buttons
         initDateButtons();
@@ -43,8 +42,10 @@ public class VendorBookingCalendarScreen extends AppCompatActivity {
             public void onClick(View view) {
                 int eventId = getEventIdFromButtonId(view.getId());
                 if (eventId > 0) {
-                    db.addVendorToEvent(eventId, vendorName);
-                    showConfirmationDialog(eventId);
+                    Intent toBookingPreview = new Intent(VendorBookingCalendarScreen.this, BoothBookingPreviewScreen.class);
+                    toBookingPreview.putExtra("eventid", eventId);
+                    toBookingPreview.putExtra("vendorname", vendorName);
+                    startActivity(toBookingPreview);
                 }
             }
         };
@@ -81,18 +82,5 @@ public class VendorBookingCalendarScreen extends AppCompatActivity {
             return 2;
         }
         return -1;
-    }
-
-    private void showConfirmationDialog(int eventId) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Booking Confirmation");
-        builder.setMessage("You have been added to Event " + eventId + ".")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // Handle the "OK" button click
-                    }
-                });
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 }

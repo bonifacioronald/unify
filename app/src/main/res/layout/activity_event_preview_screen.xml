@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/preview_page_background"
+    android:background="@drawable/cns_preview_background"
     tools:context=".screens.EventPreviewScreen">
 
     <Button
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="160dp"
         android:fontFamily="sans-serif-black"
         android:text="Club &amp; Society Festival"
         android:textColor="#FFFFFF"

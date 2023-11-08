@@ -16,7 +16,7 @@
             android:name=".screens.BoothBookingPreviewScreenTFF"
             android:exported="false" />
         <activity
-            android:name=".screens.BoothBookingPreviewScreenCns"
+            android:name=".screens.BoothBookingPreviewScreen"
             android:exported="false" />
         <activity
             android:name=".screens.BoothBookingPreviewScreen"

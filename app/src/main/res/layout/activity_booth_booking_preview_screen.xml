@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/preview_page_background"
+    android:background="@drawable/cns_preview_background"
     tools:context=".screens.EventPreviewScreen">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/backButton"
         android:layout_width="55dp"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="160dp"
         android:fontFamily="sans-serif-black"
         android:text="Club &amp; Society Festival"
         android:textColor="#FFFFFF"
@@ -71,15 +71,17 @@
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/vendorBgCard"
         android:layout_width="match_parent"
         android:layout_height="238dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
+        android:src="@drawable/participating_vendors_bg"
+        app:layout_constraintBottom_toTopOf="@+id/bookEventBtn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date"
-        app:srcCompat="@drawable/participated_vendors_card" />
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <TextView
         android:id="@+id/textView11"
@@ -93,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/vendorBgCard" />
 
     <TextView
         android:id="@+id/participatingVendorList"
@@ -103,8 +105,8 @@
         android:layout_marginBottom="12dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/available_booth_num"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/vendorBgCard"
+        app:layout_constraintStart_toStartOf="@+id/vendorBgCard"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
@@ -115,9 +117,9 @@
         android:text="Available Booth Left: 3 Slots"
         android:textColor="@color/text"
         android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/vendorBgCard"
+        app:layout_constraintEnd_toEndOf="@+id/vendorBgCard"
+        app:layout_constraintStart_toStartOf="@+id/vendorBgCard"
         app:layout_constraintVertical_bias="0.888"
         tools:ignore="MissingConstraints" />
 
@@ -127,7 +129,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/auth_button"
         android:fontFamily="sans-serif-black"
         android:text="BOOK EVENT >"
