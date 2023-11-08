@@ -134,8 +134,9 @@ public class EventDBHelper extends SQLiteOpenHelper {
                 do {
                     @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(ID_FIELD));
                     @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex(TITLE_FIELD));
+                    @SuppressLint("Range") String vendorIdList = cursor.getString(cursor.getColumnIndex(VENDOR_ID_LIST_FIELD));
 
-                    Log.d("Database Content", "ID: " + id + " | Title: " + title);
+                    Log.d("Database Content", "ID: " + id + " | Title: " + title + " | VendorIdList: " + vendorIdList);
 
                     // Add more fields as needed
                 } while (cursor.moveToNext());
@@ -147,7 +148,6 @@ public class EventDBHelper extends SQLiteOpenHelper {
         } finally {
             cursor.close();
         }
-
     }
 
     public void clearDatabase() {
@@ -160,7 +160,7 @@ public class EventDBHelper extends SQLiteOpenHelper {
         DB.close();
     }
 
-    public boolean addVendorToEvent(int eventId, int newVendorId) {
+    public boolean addVendorToEvent(int eventId, String newVendorId) {
         SQLiteDatabase DB = this.getWritableDatabase();
 
         // First, retrieve the existing vendorIdList for the event with the given ID
