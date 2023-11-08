@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.mad_assignment2.R;
 import com.example.mad_assignment2.data.VendorDBHelper;
+import com.example.mad_assignment2.models.Vendor;
 
 public class VendorLoginScreen extends AppCompatActivity {
 
@@ -40,10 +41,13 @@ public class VendorLoginScreen extends AppCompatActivity {
                 String enteredPassword = passwordET.getText().toString();
 
                 // Authenticate the user
-                if (vendorDBHelper.authenticateUser(enteredEmail, enteredPassword)) {
+                Vendor authenticatedVendor = vendorDBHelper.authenticateUser(enteredEmail, enteredPassword);
+                if (authenticatedVendor != null) {
                     // Successful login
                     showToast("Login Successful");
+                    // Now you can access authenticatedVendor and its properties if needed.
                     Intent toBoothBookingCalendar = new Intent(VendorLoginScreen.this, VendorBookingCalendarScreen.class);
+                    toBoothBookingCalendar.putExtra("vendorname", authenticatedVendor.getName());
                     startActivity(toBoothBookingCalendar);
                 } else {
                     // Login failed
@@ -51,6 +55,7 @@ public class VendorLoginScreen extends AppCompatActivity {
                 }
             }
         });
+
 
         changeToSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override

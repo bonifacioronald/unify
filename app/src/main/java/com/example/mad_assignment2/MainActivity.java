@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         EventDBHelper eventDb = new EventDBHelper(this);
         VendorDBHelper vendorDb = new VendorDBHelper(this);
-//        eventDb.clearDatabase();
-//        vendorDb.clearDatabase();
+        //eventDb.clearDatabase();
+    //vendorDb.clearDatabase();
         try {
             eventDb.initializeEventData();
             vendorDb.initializeVendorData();
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         super.onCreate(savedInstanceState);
-        Intent myIntent = new Intent(MainActivity.this, VendorBookingCalendarScreen.class);
+        Intent myIntent = new Intent(MainActivity.this, VendorLoginScreen.class);
         MainActivity.this.startActivity(myIntent);
     }
 }

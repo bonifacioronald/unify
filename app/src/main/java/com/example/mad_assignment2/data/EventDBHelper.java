@@ -14,8 +14,10 @@ import androidx.annotation.Nullable;
 import com.example.mad_assignment2.models.Event;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -126,6 +128,63 @@ public class EventDBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    @SuppressLint("Range")
+    public Event getEventFromId(int eventId) throws ParseException {
+        SQLiteDatabase DB = this.getReadableDatabase();
+
+        // Define the columns you want to retrieve
+        String[] columns = {
+                ID_FIELD,
+                TITLE_FIELD,
+                DESCRIPTION_FIELD,
+                ORGANIZER_FIELD,
+                BACKGROUND_LOGO_URL_FIELD,
+                START_DATE_FIELD,
+                END_DATE_FIELD,
+                TIME_FIELD,
+                VENDOR_ID_LIST_FIELD
+        };
+
+        // Define the selection criteria
+        String selection = ID_FIELD + "=?";
+        String[] selectionArgs = {String.valueOf(eventId)};
+
+        Cursor cursor = DB.query(
+                TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        if (cursor.moveToFirst()) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            ArrayList<String> initialEventList = new ArrayList<>();
+
+            Event event = new Event(0, "", "", "", "", new Date(String.valueOf(dateFormat.parse("16-11-2023"))), new Date(String.valueOf(dateFormat.parse("16-11-2023"))), "", initialEventList);
+            event.setId(cursor.getInt(cursor.getColumnIndex(ID_FIELD)));
+            event.setTitle(cursor.getString(cursor.getColumnIndex(TITLE_FIELD)));
+            event.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_FIELD)));
+            event.setOrganizer(cursor.getString(cursor.getColumnIndex(ORGANIZER_FIELD)));
+            event.setBackgroundLogoUrl(cursor.getString(cursor.getColumnIndex(BACKGROUND_LOGO_URL_FIELD)));
+            event.setStartDate(new Date(String.valueOf(dateFormat.parse(cursor.getString(cursor.getColumnIndex(START_DATE_FIELD))))));
+            event.setEndDate(new Date(String.valueOf(dateFormat.parse(cursor.getString(cursor.getColumnIndex(END_DATE_FIELD))))));
+            event.setTime(cursor.getString(cursor.getColumnIndex(TIME_FIELD)));
+
+            // Parse the vendorIdList into an ArrayList
+            String vendorIdListString = cursor.getString(cursor.getColumnIndex(VENDOR_ID_LIST_FIELD));
+            ArrayList<String> vendorIdList = new ArrayList<>(Arrays.asList(vendorIdListString.split(",")));
+            event.setVendorIdList(vendorIdList);
+
+            cursor.close();
+            return event;
+        } else {
+            return null; // Event with the given ID not found
+        }
+    }
+
     public void logEventData() {
         SQLiteDatabase DB = this.getReadableDatabase();
         Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
@@ -134,8 +193,9 @@ public class EventDBHelper extends SQLiteOpenHelper {
                 do {
                     @SuppressLint("Range") String id = cursor.getString(cursor.getColumnIndex(ID_FIELD));
                     @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex(TITLE_FIELD));
+                    @SuppressLint("Range") String vendorIdList = cursor.getString(cursor.getColumnIndex(VENDOR_ID_LIST_FIELD));
 
-                    Log.d("Database Content", "ID: " + id + " | Title: " + title);
+                    Log.d("Database Content", "ID: " + id + " | Title: " + title + " | VendorIdList: " + vendorIdList);
 
                     // Add more fields as needed
                 } while (cursor.moveToNext());
@@ -147,7 +207,6 @@ public class EventDBHelper extends SQLiteOpenHelper {
         } finally {
             cursor.close();
         }
-
     }
 
     public void clearDatabase() {
@@ -160,7 +219,7 @@ public class EventDBHelper extends SQLiteOpenHelper {
         DB.close();
     }
 
-    public boolean addVendorToEvent(int eventId, int newVendorId) {
+    public boolean addVendorToEvent(int eventId, String newVendorId) {
         SQLiteDatabase DB = this.getWritableDatabase();
 
         // First, retrieve the existing vendorIdList for the event with the given ID

@@ -58,6 +58,7 @@ public class VendorSignUpScreen extends AppCompatActivity {
 
                         showToast("Sign-up successful!");
                         Intent toBoothBookingCalendar = new Intent(VendorSignUpScreen.this, VendorBookingCalendarScreen.class);
+                        toBoothBookingCalendar.putExtra("vendorname", boothName);
                         startActivity(toBoothBookingCalendar);
                         // You can navigate to another activity here if needed.
                     } else {

@@ -189,17 +189,15 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         return vendor;
     }
 
-    public boolean authenticateUser(String email, String password) {
+    public Vendor authenticateUser(String email, String password) {
         // Retrieve user data from the database using email
         Vendor vendor = getVendorByEmail(email);
 
-        // Check if a user with the given email exists
-        if (vendor != null) {
-            // Compare the entered password with the stored password
-            return password.equals(vendor.getPassword());
+        // Check if a user with the given email exists and the password matches
+        if (vendor != null && password.equals(vendor.getPassword())) {
+            return vendor; // Return the authenticated vendor
         } else {
-            // User with the provided email doesn't exist
-            return false;
+            return null; // Return null if authentication fails
         }
     }
 
