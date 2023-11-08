@@ -30,6 +30,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".screens.DirectoryActivity"></activity>
+        <activity android:name=".screens.DirectoryDetailActivity"></activity>
     </application>
 
 </manifest>
