@@ -7,7 +7,6 @@
     android:background="@drawable/preview_page_background"
     tools:context=".screens.EventPreviewScreen">
 
-
     <Button
         android:id="@+id/button"
         android:layout_width="55dp"
@@ -19,11 +18,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="231dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="208dp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="240dp"
         android:fontFamily="sans-serif-black"
         android:text="Club &amp; Society Festival"
         android:textColor="#FFFFFF"
@@ -32,62 +32,71 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="380dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="300dp"
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-medium"
         android:text="Browse through and learn more about Taylor’s University’s diverse clubs and societies. Free of charge!"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="345dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:text="12-21 October 2023"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="345dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"
         android:text="10am - 6pm"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="380dp"
-        android:layout_height="216dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="392dp"
+        android:id="@+id/slcwalkwayimage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="layout of slc walkway"
         android:src="@drawable/event_preview_layout"
+        app:layout_constraintBottom_toTopOf="@+id/bookEventBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="layout of slc walkway"/>
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="274dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="40dp"
+        android:id="@+id/bookEventBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/auth_button"
-        android:text="View Event >"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        android:fontFamily="sans-serif-black"
+        android:text="BOOK EVENT >"
+        android:textColor="@color/secondary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
