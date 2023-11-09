@@ -21,6 +21,7 @@ import com.example.mad_assignment2.R;
 import com.example.mad_assignment2.data.EventDBHelper;
 import com.example.mad_assignment2.data.VendorDBHelper;
 import com.example.mad_assignment2.models.Event;
+import com.example.mad_assignment2.models.Vendor;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,7 +30,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class BoothBookingPreviewScreen extends AppCompatActivity {
-    private TextView title, description, date, time, participatingVendorList;
+    private TextView title, description, date, time, participatingVendorList, availableBooth;
     private androidx.constraintlayout.widget.ConstraintLayout backgroundImage;
     private Button bookingBtn, backButton;
 
@@ -43,6 +44,7 @@ public class BoothBookingPreviewScreen extends AppCompatActivity {
         date = findViewById(R.id.date);
         time = findViewById(R.id.time);
         participatingVendorList = findViewById(R.id.participatingVendorList);
+        availableBooth = findViewById(R.id.available_booth_num);
         backgroundImage = findViewById(R.id.backgroundImage);
         bookingBtn = findViewById(R.id.bookEventBtn);
         backButton = findViewById(R.id.backButton);
@@ -60,15 +62,6 @@ public class BoothBookingPreviewScreen extends AppCompatActivity {
             }
         });
 
-        bookingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                eventDbHelper.addVendorToEvent(eventId, vendorName);
-                showConfirmationDialog(eventId);
-            }
-        });
-
-                // Check if eventId is valid
         if (eventId > 0) {
             Event event = null;
             try {
@@ -83,13 +76,40 @@ public class BoothBookingPreviewScreen extends AppCompatActivity {
                 description.setText(event.getDescription());
                 date.setText(formatDateRange(event.getStartDate(), event.getEndDate()));
                 time.setText(event.getTime());
-                participatingVendorList.setText(formatVendorList(event.getVendorIdList()));
-
+                participatingVendorList.setText( formatVendorList(event.getVendorIdList()));
+                availableBooth.setText("Available booth(s) left: " + remainingBooth(event.getVendorIdList()));
                 int id = getResources().getIdentifier(event.getBackgroundLogoUrl(), "drawable", getPackageName());
                 Drawable drawable = getResources().getDrawable(id);
                 backgroundImage.setBackground(drawable);
             }
         }
+
+        bookingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Event event = null;
+                try {
+                    event = eventDbHelper.getEventFromId(eventId);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                if(event.getVendorIdList().contains(vendorName)) {
+                    showUnsuccessfulDialog("Sorry! You have already booked a booth in this event.");
+                }
+                else if(remainingBooth(event.getVendorIdList()) == 0) {
+                    showUnsuccessfulDialog("Sorry! No more booth available.");
+                }
+                else  {
+                    eventDbHelper.addVendorToEvent(eventId, vendorName);
+                    Vendor vendor =  vendorDBHelper.getVendorByName(vendorName);
+
+                    //Assign booth number
+                    int boothNumber = event.getVendorIdList().size() + 1;
+                    vendor.setBoothLocation(boothNumber);
+                    showConfirmationDialog(event, vendor);
+                }
+            }
+        });
     }
 
     private String formatDateRange(Date startDate, Date endDate) {
@@ -98,7 +118,7 @@ public class BoothBookingPreviewScreen extends AppCompatActivity {
         String formattedStartDate = dateFormat.format(startDate);
         String formattedEndDate = dateFormat.format(endDate);
         String formattedMonthYear = monthYearFormat.format(startDate);
-        return formattedStartDate + " - " + formattedEndDate + formattedMonthYear;
+        return formattedStartDate + " - " + formattedEndDate + " " + formattedMonthYear;
     }
 
     private String formatVendorList(ArrayList<String> vendorList) {
@@ -113,13 +133,33 @@ public class BoothBookingPreviewScreen extends AppCompatActivity {
         return formattedList.toString();
     }
 
-    private void showConfirmationDialog(int eventId) {
+    private int remainingBooth(ArrayList<String> vendorList) {
+        int totalSlot = 15;
+        int remainingSlot = totalSlot - vendorList.size();
+        return remainingSlot;
+    }
+
+    private void showConfirmationDialog(Event event, Vendor vendor) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Booking Confirmation");
-        builder.setMessage("You have been added to Event " + eventId + ".")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setTitle("Booking Successful!");
+        builder.setMessage("Congratulations! You have booked a booth for:\n\n" + "Event Name: " + event.getTitle() + "\nDate: " + formatDateRange(event.getStartDate(), event.getEndDate()) + "\nBooth Number: " + vendor.getBoothLocation())
+                .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // Handle the "OK" button click
+                        Intent toHomeScreen = new Intent(BoothBookingPreviewScreen.this, HomeScreen.class);
+                        startActivity(toHomeScreen);
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showUnsuccessfulDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Booking Failed!");
+        builder.setMessage(message)
+                .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
                     }
                 });
         AlertDialog dialog = builder.create();
