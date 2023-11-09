@@ -212,4 +212,19 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         cursor.close();
         return count > 0;
     }
+
+     public Cursor readVendorDetails(){
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+
+
 }
+
