@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/backgroundImage"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/preview_page_background"
-    tools:context=".screens.BoothBookingPreviewScreen">
-
-
+    android:background="@drawable/cns_preview_background"
+    tools:context=".screens.EventPreviewScreen">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/backButton"
         android:layout_width="55dp"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
@@ -20,11 +19,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="231dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="196dp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="160dp"
         android:fontFamily="sans-serif-black"
         android:text="Club &amp; Society Festival"
         android:textColor="#FFFFFF"
@@ -33,95 +33,112 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="380dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="300dp"
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-medium"
         android:text="Browse through and learn more about Taylor’s University’s diverse clubs and societies. Free of charge!"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="345dp"
-        android:text="12-21 October 2023"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:text="16-23 November 2023"
         android:textColor="#FFFFFF"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="345dp"
-        android:layout_marginEnd="16dp"
-        android:text="10am - 6pm"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"
+        android:text="8am - 5pm"
         android:textColor="#FFFFFF"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="274dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/auth_button"
-        android:text="View Event >"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="382dp"
+        android:id="@+id/vendorBgCard"
+        android:layout_width="match_parent"
         android:layout_height="238dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="104dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/participating_vendors_bg"
+        app:layout_constraintBottom_toTopOf="@+id/bookEventBtn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/participated_vendors_card" />
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <TextView
-        android:id="@+id/f_b_existing_vendors"
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Participating Vendors"
+        android:textColor="@color/accent"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/vendorBgCard" />
+
+    <TextView
+        android:id="@+id/participatingVendorList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginEnd="40dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/fashion_existing_booth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="228dp"
-        android:layout_marginBottom="232dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/available_booth_num"
+        app:layout_constraintEnd_toEndOf="@+id/vendorBgCard"
+        app:layout_constraintStart_toStartOf="@+id/vendorBgCard"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/available_booth_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3"
-        android:textColor="#F44336"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        android:layout_marginBottom="28dp"
+        android:text="Available Booth(s) Left: 3"
+        android:textColor="@color/text"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vendorBgCard"
+        app:layout_constraintEnd_toEndOf="@+id/vendorBgCard"
+        app:layout_constraintStart_toStartOf="@+id/vendorBgCard"
         app:layout_constraintVertical_bias="0.888"
-        tools:layout_editor_absoluteX="174dp"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/bookEventBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/auth_button"
+        android:fontFamily="sans-serif-black"
+        android:text="BOOK EVENT >"
+        android:textColor="@color/secondary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

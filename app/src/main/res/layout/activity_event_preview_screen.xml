@@ -5,9 +5,8 @@
     android:id="@+id/event_preview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/preview_page_background"
+    android:background="@drawable/cns_preview_background"
     tools:context=".screens.EventPreviewScreen">
-
 
     <Button
         android:id="@+id/backButton"
@@ -20,11 +19,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+
         android:id="@+id/eventTitleText"
         android:layout_width="231dp"
         android:layout_height="82dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="208dp"
+
         android:fontFamily="sans-serif-black"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
@@ -37,11 +38,12 @@
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="300dp"
+
         android:fontFamily="sans-serif-medium"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/eventDateText"
@@ -49,42 +51,55 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="345dp"
+
+
         android:textColor="#FFFFFF"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
+
         android:id="@+id/eventTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="345dp"
         android:layout_marginEnd="16dp"
+
         android:textColor="#FFFFFF"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="380dp"
-        android:layout_height="216dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="392dp"
+        android:id="@+id/slcwalkwayimage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="layout of slc walkway"
         android:src="@drawable/event_preview_layout"
+        app:layout_constraintBottom_toTopOf="@+id/bookEventBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="layout of slc walkway"/>
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <Button
+
         android:id="@+id/eventDetailButton"
         android:layout_width="274dp"
         android:layout_height="53dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="40dp"
+
         android:background="@drawable/auth_button"
-        android:text="View Event >"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        android:fontFamily="sans-serif-black"
+        android:text="BOOK EVENT >"
+        android:textColor="@color/secondary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
