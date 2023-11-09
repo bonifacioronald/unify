@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.mad_assignment2.R;
 
-public class CalendarScreen extends AppCompatActivity {
+public class EventPreviewScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar_screen);
+        setContentView(R.layout.activity_event_preview_screen);
     }
 }
