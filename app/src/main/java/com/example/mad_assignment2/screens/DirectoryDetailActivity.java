@@ -15,14 +15,22 @@ public class DirectoryDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView imageView = findViewById(R.id.imageView);
-        TextView textView = findViewById(R.id.textView);
+        ImageView imageView1 = findViewById(R.id.imageView1);
+        ImageView imageView2 = findViewById(R.id.imageView2);
+        TextView titleTextView = findViewById(R.id.titleTextView);
+        TextView descriptionTextView = findViewById(R.id.descriptionTextView);
 
-        String pictureName = getIntent().getStringExtra("PICTURE_NAME");
-        String text = getIntent().getStringExtra("TEXT");
+        String pictureName1 = getIntent().getStringExtra("pictureName1");
+        String pictureName2 = getIntent().getStringExtra("pictureName2");
+        String title = getIntent().getStringExtra("title");
+        String description = getIntent().getStringExtra("description");
 
-        int imageResId = getResources().getIdentifier(pictureName, "drawable", getPackageName());
-        imageView.setImageResource(imageResId);
-        textView.setText(text);
+        int imageResource1 = getResources().getIdentifier(pictureName1, "drawable", getPackageName());
+        int imageResource2 = getResources().getIdentifier(pictureName2, "drawable", getPackageName());
+        imageView1.setImageResource(imageResource1);
+        imageView2.setImageResource(imageResource2);
+
+        titleTextView.setText(title);
+        descriptionTextView.setText(description);
     }
 }
