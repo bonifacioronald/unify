@@ -189,4 +189,58 @@ public class EventDBHelper extends SQLiteOpenHelper {
         return false; // Failed to add the new vendor ID
     }
 
+    public String getEventTitle(int eventId) {
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT " + TITLE_FIELD + " FROM " + TABLE_NAME + " WHERE " + ID_FIELD + "=?", new String[]{String.valueOf(eventId)});
+        String eventTitle = null;
+
+        if (cursor.moveToFirst()) {
+            eventTitle = cursor.getString(0);
+        }
+
+        cursor.close();
+        return eventTitle;
+    }
+
+    public String getEventDescription(int eventId) {
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT " + DESCRIPTION_FIELD + " FROM " + TABLE_NAME + " WHERE " + ID_FIELD + "=?", new String[]{String.valueOf(eventId)});
+        String eventDescription = null;
+
+        if (cursor.moveToFirst()) {
+            eventDescription = cursor.getString(0);
+        }
+
+        cursor.close();
+        return eventDescription;
+    }
+
+    public String getEventDate(int eventId) {
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT " + START_DATE_FIELD + ", " + END_DATE_FIELD + " FROM " + TABLE_NAME + " WHERE " + ID_FIELD + "=?", new String[]{String.valueOf(eventId)});
+        String eventDate = null;
+
+        if (cursor.moveToFirst()) {
+            String startDate = cursor.getString(0);
+            String endDate = cursor.getString(1);
+            eventDate = startDate + " - " + endDate;
+        }
+
+        cursor.close();
+        return eventDate;
+    }
+
+    public String getEventTime(int eventId) {
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT " + TIME_FIELD + " FROM " + TABLE_NAME + " WHERE " + ID_FIELD + "=?", new String[]{String.valueOf(eventId)});
+        String eventTime = null;
+
+        if (cursor.moveToFirst()) {
+            eventTime = cursor.getString(0);
+        }
+
+        cursor.close();
+        return eventTime;
+    }
+
 }
