@@ -27,13 +27,13 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.551"
+                app:layout_constraintHorizontal_bias="0.549"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.068" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/backImageButton"
                 android:layout_width="55dp"
                 android:layout_height="53dp"
                 android:background="#00000000"
@@ -46,18 +46,20 @@
                 app:layout_constraintVertical_bias="0.055"
                 app:srcCompat="@drawable/back_button_icon" />
 
-<!--            <ImageButton-->
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="600dp"
-                android:layout_height="240dp"
-                android:layout_marginBottom="16dp"
+            <ImageButton
+                android:id="@+id/previewImageButton"
+                android:layout_width="450dp"
+                android:layout_height="270dp"
+                android:layout_marginTop="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/event_card1"
+                android:background="#00000000"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Events_Details"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="-95dp"
                 tools:visibility="visible" />
 
 
@@ -72,95 +74,10 @@
                 android:layout_width="342dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
-                android:text="Food &amp; Beverages"
+                android:text="What's Happening now!"
                 android:textColor="@color/text"
                 android:textSize="27dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.094"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="10dp"
-                >
-
-                <ImageButton
-                    android:id="@+id/imageButton1"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="10dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/fandb_card1"
-                    tools:ignore="MissingConstraints" />
-
-                <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/fandb_card2"
-                    tools:ignore="MissingConstraints"
-                    android:layout_marginRight="10dp"
-                    />
-
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/fandb_card3"
-                    tools:ignore="MissingConstraints"
-                    android:layout_marginRight="10dp"
-                    />
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textview7"
-                android:layout_width="342dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Fashion"
-                android:textColor="@color/text"
-                android:textSize="27dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -169,156 +86,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/imageButton4"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/fashion_card1"
-                    tools:ignore="MissingConstraints"
-                    android:layout_marginRight="10dp"
-                    />
-
-                <ImageButton
-                    android:id="@+id/imageButton5"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/fashion_card2"
-                    tools:ignore="MissingConstraints"
-                    android:layout_marginRight="10dp"
-                    />
-
-                <ImageButton
-                    android:id="@+id/imageButton6"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/fashion_card3"
-                    tools:ignore="MissingConstraints"
-                    android:layout_marginRight="10dp"
-                    />
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textview8"
-                android:layout_width="342dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Others"
-                android:textColor="@color/text"
-                android:textSize="27dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="454dp"
+                android:paddingTop="?attr/actionBarSize"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.094"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            >
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton7"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/others_card1"
-                    tools:ignore="MissingConstraints"
-                    android:layout_marginRight="10dp"
-                    />
-
-                <ImageButton
-                    android:id="@+id/imageButton8"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/others_card2"
-                    tools:ignore="MissingConstraints"
-                    android:layout_marginRight="10dp"
-                    />
-
-                <ImageButton
-                    android:id="@+id/imageButton9"
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#00000000"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/others_card3"
-                    tools:ignore="MissingConstraints"
-                    android:layout_marginRight="10dp"
-                    />
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
 
     </LinearLayout>
 </ScrollView>

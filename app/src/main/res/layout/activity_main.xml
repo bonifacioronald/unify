@@ -81,7 +81,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/backButton"
         android:layout_width="55dp"
         android:layout_height="53dp"
         android:layout_marginTop="25dp"
@@ -144,20 +144,20 @@
         android:textColor="@color/text"
         android:textSize="11sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/avgRating"
+        app:layout_constraintBottom_toTopOf="@+id/averageRatingTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toEndOf="@id/imageView2"
         app:layout_constraintTop_toBottomOf="@id/textView4" />
 
     <TextView
-        android:id="@+id/avgRating"
+        android:id="@+id/averageRatingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="57dp"
         android:layout_marginTop="8dp"
-        android:text="Average Rating: 0"
+        android:text="Average Rating: 5.0"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar"
         app:layout_constraintEnd_toEndOf="parent"
