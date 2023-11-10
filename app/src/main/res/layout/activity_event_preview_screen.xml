@@ -43,7 +43,7 @@
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/eventTitleText" />
 
     <TextView
         android:id="@+id/eventDateText"
@@ -51,25 +51,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="345dp"
-
-
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintTop_toBottomOf="@+id/eventDescriptionText" />
 
     <TextView
-
         android:id="@+id/eventTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="345dp"
         android:layout_marginEnd="16dp"
-
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintTop_toBottomOf="@+id/eventDescriptionText" />
 
     <ImageView
         android:id="@+id/slcwalkwayimage"
@@ -80,9 +76,9 @@
         android:layout_marginTop="20dp"
         android:contentDescription="layout of slc walkway"
         android:src="@drawable/event_preview_layout"
-        app:layout_constraintBottom_toTopOf="@+id/bookEventBtn"
+        app:layout_constraintBottom_toTopOf="@+id/eventDetailButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toBottomOf="@+id/eventDateText" />
 
     <Button
 
@@ -94,7 +90,7 @@
 
         android:background="@drawable/auth_button"
         android:fontFamily="sans-serif-black"
-        android:text="BOOK EVENT >"
+        android:text="VIEW EVENT >"
         android:textColor="@color/secondary"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
