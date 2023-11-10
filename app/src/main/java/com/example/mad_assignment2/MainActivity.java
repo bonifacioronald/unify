@@ -9,6 +9,7 @@ import android.util.Log;
 import com.example.mad_assignment2.data.EventDBHelper;
 import com.example.mad_assignment2.data.VendorDBHelper;
 import com.example.mad_assignment2.models.Event;
+import com.example.mad_assignment2.screens.SplashScreen;
 import com.example.mad_assignment2.screens.VendorBookingCalendarScreen;
 import com.example.mad_assignment2.screens.VendorLoginScreen;
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         EventDBHelper eventDb = new EventDBHelper(this);
         VendorDBHelper vendorDb = new VendorDBHelper(this);
         //eventDb.clearDatabase();
-    //vendorDb.clearDatabase();
+        //vendorDb.clearDatabase();
         try {
             eventDb.initializeEventData();
             vendorDb.initializeVendorData();
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         super.onCreate(savedInstanceState);
-        Intent myIntent = new Intent(MainActivity.this, VendorLoginScreen.class);
+        Intent myIntent = new Intent(MainActivity.this, SplashScreen.class);
         MainActivity.this.startActivity(myIntent);
     }
 }
