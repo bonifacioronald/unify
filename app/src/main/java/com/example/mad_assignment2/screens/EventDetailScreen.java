@@ -28,7 +28,7 @@ public class EventDetailScreen extends AppCompatActivity {
     Button backButton;
 
     VendorDBHelper vendorDBHelper;
-    ArrayList<String> name, imageUrl;
+    ArrayList<String> name, imageUrl,category;
 
     CustomAdapter customAdapter;
     @SuppressLint("MissingInflatedId")
@@ -42,10 +42,11 @@ public class EventDetailScreen extends AppCompatActivity {
         vendorDBHelper = new VendorDBHelper(EventDetailScreen.this);
         name = new ArrayList<>();
         imageUrl = new ArrayList<>();
+        category = new ArrayList<>();
 
         storeVendorDataInArrays();
 
-        customAdapter = new CustomAdapter(EventDetailScreen.this,name,imageUrl);
+        customAdapter = new CustomAdapter(EventDetailScreen.this,name,imageUrl,category);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(EventDetailScreen.this));
 
@@ -78,7 +79,7 @@ public class EventDetailScreen extends AppCompatActivity {
         }else{
             while (cursor.moveToNext()){
                 name.add(cursor.getString(0));
-                imageUrl.add(cursor.getString(4));
+                category.add(cursor.getString(4));
             }
         }
     }

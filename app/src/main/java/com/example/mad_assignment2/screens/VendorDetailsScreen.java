@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.mad_assignment2.R;
 
-public class TestingOnly extends AppCompatActivity {
+public class VendorDetailsScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
