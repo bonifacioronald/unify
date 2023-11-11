@@ -15,24 +15,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad_assignment2.R;
 import com.example.mad_assignment2.screens.EventPreviewScreen;
-import com.example.mad_assignment2.screens.TestingOnly;
+import com.example.mad_assignment2.screens.HomeScreen;
+import com.example.mad_assignment2.screens.VendorDetailsScreen;
 
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
-    private ArrayList name, imageUrl;
+    private ArrayList name, imageUrl,category;
 
     int position;
 
     public CustomAdapter(Context context,
                          ArrayList name,
-                         ArrayList imageUrl){
+                         ArrayList imageUrl,
+                         ArrayList category){
 
         this.context = context;
         this.name = name;
         this.imageUrl = imageUrl;
+        this.category = category;
     }
     @NonNull
     @Override
@@ -46,12 +49,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
 
         holder.vendor_name_txt.setText(String.valueOf(name.get(position)));
-        holder.imageUrl_txt.setText(String.valueOf(imageUrl.get(position)));
+        holder.imageUrl_txt.setText(String.valueOf(category.get(position)));
         holder.eventDetailsLayout.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, TestingOnly.class);
+                Intent intent = new Intent(context, VendorDetailsScreen.class);
                 context.startActivity(intent);
 
             }
