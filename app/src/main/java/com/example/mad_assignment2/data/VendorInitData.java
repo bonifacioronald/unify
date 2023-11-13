@@ -24,7 +24,7 @@ public class VendorInitData {
                 "https://static.toiimg.com/thumb/msid-70661134,width-1280,resizemode-4/70661134.jpg",
                 4,
                 1,
-                "@drawable/dic01.png");
+                "dic01");
 
         Vendor volleyballClub = new Vendor(
                 "Taylor's Volleyball Club",
@@ -35,7 +35,7 @@ public class VendorInitData {
                 "https://medias.paris2024.org/uploads/2023/03/GettyImages-591969630-min-scaled.jpg?x-oss-process=image/resize,w_2560,h_1706,m_lfit/format,jpeg",
                 4.5,
                 2,
-                "@drawable/dic02.png");
+                "dic02");
 
         Vendor cookingClub = new Vendor(
                 "Taylor's Cooking Club",
@@ -46,7 +46,7 @@ public class VendorInitData {
                 "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2019_41/3044956/191009-cooking-vegetables-al-1422.jpg",
                 4.2,
                 3,
-                "@drawable/dic03.png");
+                "dic03");
 
         Vendor kfc = new Vendor(
                 "KFC",
@@ -57,7 +57,7 @@ public class VendorInitData {
                 "",
                 4.7,
                 4,
-                "@drawable/dic04.png");
+                "dic04");
 
         Vendor mcdonalds = new Vendor(
                 "McDonald's",
@@ -68,7 +68,7 @@ public class VendorInitData {
                 "",
                 4.5,
                 5,
-                "@drawable/dic05.png");
+                "dic05");
 
         Vendor starbucks = new Vendor(
                 "Starbucks",
@@ -79,7 +79,7 @@ public class VendorInitData {
                 "",
                 4.8,
                 6,
-                "@drawable/dic06.png");
+                "dic06");
 
         Vendor nasiLemakDelights = new Vendor(
                 "Nasi Lemak Delights",
@@ -90,7 +90,7 @@ public class VendorInitData {
                 "https://www.yummytummyaarthi.com/wp-content/uploads/2023/03/3f0d98a9-c59f-4dac-8071-4087d82aa365-scaled.jpeg", // You can replace with the actual image URL
                 4.6,
                 1,
-                "@drawable/dic01.png");
+                "dic01");
 
         Vendor rotiCanaiCorner = new Vendor(
                 "Roti Canai Corner",
@@ -101,7 +101,7 @@ public class VendorInitData {
                 "https://www.kuali.com/wp-content/uploads/2015/05/Roti-canai.jpg", // You can replace with the actual image URL
                 4.7,
                 2,
-                "@drawable/dic01.png");
+                "dic02");
 
         Vendor satayParadise = new Vendor(
                 "Satay Paradise",
@@ -112,7 +112,7 @@ public class VendorInitData {
                 "https://media-cdn2.greatbritishchefs.com/media/p5abv3mz/img82070.whqc_1426x713q80.jpg", // You can replace with the actual image URL
                 4.5,
                 3,
-                "@drawable/dic01.png");
+                "dic03");
 
         Vendor laksaHaven = new Vendor(
                 "Laksa Haven",
@@ -123,7 +123,7 @@ public class VendorInitData {
                 "https://rasamalaysia.com/wp-content/uploads/2011/07/curry-laksa-thumb.jpg", // You can replace with the actual image URL
                 4.4,
                 4,
-                "@drawable/dic01.png");
+                "dic04");
 
         Vendor hainaneseChickenRice = new Vendor(
                 "Hainanese Chicken Rice Delights",
@@ -134,7 +134,7 @@ public class VendorInitData {
                 "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/154660.jpg", // You can replace with the actual image URL
                 4.5,
                 5,
-                "@drawable/dic01.png");
+                "dic05");
 
         Vendor cendolOasis = new Vendor(
                 "Cendol Oasis",
@@ -145,7 +145,7 @@ public class VendorInitData {
                 "https://sm.mashable.com/mashable_sea/photo/default/cendol-melaka-food-blog-1_64sj.jpg", // You can replace with the actual image URL
                 4.3,
                 6,
-                "@drawable/dic01.png");
+                "dic06");
 
         initialVendorList.add(basketballClub);
         initialVendorList.add(volleyballClub);
