@@ -25,17 +25,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Context context;
     private ArrayList name, imageUrl,category;
 
+    private ArrayList<Integer> buttonIds;
+
     int position;
 
     public CustomAdapter(Context context,
                          ArrayList name,
                          ArrayList imageUrl,
-                         ArrayList category){
+                         ArrayList category,
+                         ArrayList<Integer> buttonIds){
 
         this.context = context;
         this.name = name;
         this.imageUrl = imageUrl;
         this.category = category;
+        this.buttonIds = buttonIds;
     }
     @NonNull
     @Override
@@ -50,11 +54,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         holder.vendor_name_txt.setText(String.valueOf(name.get(position)));
         holder.imageUrl_txt.setText(String.valueOf(category.get(position)));
+        final int buttonId = buttonIds.get(position);
+
         holder.eventDetailsLayout.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, VendorDetailsScreen.class);
+                intent.putExtra("BUTTON_ID", buttonId);
                 context.startActivity(intent);
 
             }
@@ -80,4 +87,5 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             eventDetailsLayout = itemView.findViewById(R.id.eventDetailsLayout);
         }
     }
+
 }

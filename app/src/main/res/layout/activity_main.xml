@@ -81,7 +81,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <ImageButton
-        android:id="@+id/backButton"
+        android:id="@+id/backButton01"
         android:layout_width="55dp"
         android:layout_height="53dp"
         android:layout_marginTop="25dp"
@@ -91,8 +91,7 @@
         app:layout_constraintHorizontal_bias="0.313"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_button_icon"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/back_button_icon" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

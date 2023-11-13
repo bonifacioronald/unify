@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         super.onCreate(savedInstanceState);
-        Intent myIntent = new Intent(MainActivity.this, EventDetailScreen.class);
+        Intent myIntent = new Intent(MainActivity.this, DetailActivityScreen.class);
         MainActivity.this.startActivity(myIntent);
     }
 }

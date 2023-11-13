@@ -28,6 +28,7 @@ public class VendorDBHelper extends SQLiteOpenHelper {
     private static final String IMAGE_URL_FIELD = "imageUrl";
     private static final String RATING_FIELD = "rating";
     private static final String BOOTH_LOCATION_FIELD = "boothLocation";
+    private static final String BOOTH_DIRECTORY_FIELD = "boothDirectory";
 
     public VendorDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -43,7 +44,8 @@ public class VendorDBHelper extends SQLiteOpenHelper {
                 CATEGORY_FIELD + " TEXT, " +
                 IMAGE_URL_FIELD + " TEXT, " +
                 RATING_FIELD + " REAL, " +
-                BOOTH_LOCATION_FIELD + " INTEGER)";
+                BOOTH_LOCATION_FIELD + " INTEGER, " +
+                BOOTH_DIRECTORY_FIELD + " TEXT)";
         sqLiteDatabase.execSQL(createTableSQL);
     }
 
@@ -80,6 +82,7 @@ public class VendorDBHelper extends SQLiteOpenHelper {
                 contentValues.put(IMAGE_URL_FIELD, vendor.getImageUrl());
                 contentValues.put(RATING_FIELD, vendor.getRating());
                 contentValues.put(BOOTH_LOCATION_FIELD, vendor.getBoothLocation());
+                contentValues.put(BOOTH_DIRECTORY_FIELD, vendor.getBoothDirectory());
 
                 long result = DB.insert(TABLE_NAME, null, contentValues);
 
@@ -147,6 +150,8 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         values.put(IMAGE_URL_FIELD, vendor.getImageUrl());
         values.put(RATING_FIELD, vendor.getRating());
         values.put(BOOTH_LOCATION_FIELD, vendor.getBoothLocation());
+        values.put(BOOTH_DIRECTORY_FIELD, vendor.getBoothDirectory());
+
 
         long result = db.insert(TABLE_NAME, null, values);
         db.close();
@@ -159,7 +164,7 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         Vendor vendor = null;
 
         // Define the columns you want to retrieve
-        String[] columns = {NAME_FIELD, EMAIL_FIELD, PASSWORD_FIELD, DESCRIPTION_FIELD, CATEGORY_FIELD, IMAGE_URL_FIELD, RATING_FIELD, BOOTH_LOCATION_FIELD};
+        String[] columns = {NAME_FIELD, EMAIL_FIELD, PASSWORD_FIELD, DESCRIPTION_FIELD, CATEGORY_FIELD, IMAGE_URL_FIELD, RATING_FIELD, BOOTH_LOCATION_FIELD,BOOTH_DIRECTORY_FIELD};
 
         // Define the selection criteria (WHERE clause)
         String selection = EMAIL_FIELD + " = ?";
@@ -177,9 +182,9 @@ public class VendorDBHelper extends SQLiteOpenHelper {
             @SuppressLint("Range") String imageUrl = cursor.getString(cursor.getColumnIndex(IMAGE_URL_FIELD));
             @SuppressLint("Range") double rating = cursor.getDouble(cursor.getColumnIndex(RATING_FIELD));
             @SuppressLint("Range") int boothLocation = cursor.getInt(cursor.getColumnIndex(BOOTH_LOCATION_FIELD));
-
+            @SuppressLint("Range") String boothDirectory = cursor.getString(cursor.getColumnIndex(BOOTH_DIRECTORY_FIELD));
             // Create a Vendor object
-            vendor = new Vendor(name, email, password, description, category, imageUrl, rating, boothLocation);
+            vendor = new Vendor(name, email, password, description, category, imageUrl, rating, boothLocation,boothDirectory);
         }
 
         // Close the cursor and database
@@ -212,9 +217,9 @@ public class VendorDBHelper extends SQLiteOpenHelper {
             @SuppressLint("Range") String imageUrl = cursor.getString(cursor.getColumnIndex(IMAGE_URL_FIELD));
             @SuppressLint("Range") double rating = cursor.getDouble(cursor.getColumnIndex(RATING_FIELD));
             @SuppressLint("Range") int boothLocation = cursor.getInt(cursor.getColumnIndex(BOOTH_LOCATION_FIELD));
-
+            @SuppressLint("Range") String boothDirectory = cursor.getString(cursor.getColumnIndex(BOOTH_DIRECTORY_FIELD));
             // Create a Vendor object
-            vendor = new Vendor(name, email, password, description, category, imageUrl, rating, boothLocation);
+            vendor = new Vendor(name, email, password, description, category, imageUrl, rating, boothLocation,boothDirectory);
         }
 
         // Close the cursor and database
@@ -258,6 +263,57 @@ public class VendorDBHelper extends SQLiteOpenHelper {
     }
 
 
+        public Vendor getVendorByButtonId(int buttonId) {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Vendor vendor = null;
 
+            String[] columns = {
+                    NAME_FIELD,
+                    EMAIL_FIELD,
+                    PASSWORD_FIELD,
+                    DESCRIPTION_FIELD,
+                    CATEGORY_FIELD,
+                    IMAGE_URL_FIELD,
+                    RATING_FIELD,
+                    BOOTH_LOCATION_FIELD,
+                    BOOTH_DIRECTORY_FIELD
+            };
+
+            String selection = BOOTH_LOCATION_FIELD + " = ?";
+            String[] selectionArgs = {String.valueOf(buttonId)};
+
+            Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+
+            if (cursor.moveToFirst()) {
+
+                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(NAME_FIELD));
+                @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex(EMAIL_FIELD));
+                @SuppressLint("Range") String password = cursor.getString(cursor.getColumnIndex(PASSWORD_FIELD));
+                @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(DESCRIPTION_FIELD));
+                @SuppressLint("Range") String category = cursor.getString(cursor.getColumnIndex(CATEGORY_FIELD));
+                @SuppressLint("Range") String imageUrl = cursor.getString(cursor.getColumnIndex(IMAGE_URL_FIELD));
+                @SuppressLint("Range") double rating = cursor.getDouble(cursor.getColumnIndex(RATING_FIELD));
+                @SuppressLint("Range") int boothLocation = cursor.getInt(cursor.getColumnIndex(BOOTH_LOCATION_FIELD));
+                @SuppressLint("Range") String boothDirectory = cursor.getString(cursor.getColumnIndex(BOOTH_DIRECTORY_FIELD));
+
+                vendor = new Vendor(name, email, password, description, category, imageUrl, rating, boothLocation, boothDirectory);
+            }
+
+            cursor.close();
+            db.close();
+
+            return vendor;
+        }
+    public void updateVendorRating(Vendor vendor) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(RATING_FIELD, vendor.getRating());
+
+        String selection = NAME_FIELD + " = ?";
+        String[] selectionArgs = { vendor.getName() };
+
+        db.update(TABLE_NAME, values, selection, selectionArgs);
+        db.close();
+    }
 }
 

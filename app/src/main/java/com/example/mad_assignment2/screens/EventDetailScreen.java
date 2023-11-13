@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -29,6 +30,7 @@ public class EventDetailScreen extends AppCompatActivity {
 
     VendorDBHelper vendorDBHelper;
     ArrayList<String> name, imageUrl,category;
+    ArrayList<Integer> buttonId;
 
     CustomAdapter customAdapter;
     @SuppressLint("MissingInflatedId")
@@ -43,10 +45,11 @@ public class EventDetailScreen extends AppCompatActivity {
         name = new ArrayList<>();
         imageUrl = new ArrayList<>();
         category = new ArrayList<>();
+        buttonId = new ArrayList<>();
 
         storeVendorDataInArrays();
 
-        customAdapter = new CustomAdapter(EventDetailScreen.this,name,imageUrl,category);
+        customAdapter = new CustomAdapter(EventDetailScreen.this,name,imageUrl,category,buttonId);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(EventDetailScreen.this));
 
@@ -66,6 +69,7 @@ public class EventDetailScreen extends AppCompatActivity {
             public void onClick(View v) {
                 // Define the target activity you want to navigate to
                 Intent intent = new Intent(EventDetailScreen.this, EventPreviewScreen.class);
+                intent.putExtra("BUTTON_ID", buttonId);
                 startActivity(intent);
             }
         });
@@ -80,11 +84,13 @@ public class EventDetailScreen extends AppCompatActivity {
             while (cursor.moveToNext()){
                 name.add(cursor.getString(0));
                 category.add(cursor.getString(4));
+                buttonId.add(cursor.getInt(5));
             }
         }
+        Log.d("EventDetailScreen", "name: " + name.toString());
+        Log.d("EventDetailScreen", "category: " + category.toString());
+        Log.d("EventDetailScreen", "buttonId: " + buttonId.toString());
     }
-
-
 
 }
 
