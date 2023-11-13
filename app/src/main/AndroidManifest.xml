@@ -31,27 +31,25 @@
             android:name=".screens.VendorBookingCalendarScreen"
             android:exported="false" />
         <activity
-            android:name=".screens.VendorDetailsScreen"
+            android:name=".screens.VendorDetailScreen"
             android:exported="false" />
         <activity
             android:name=".screens.HomeScreen"
             android:exported="false" />
         <activity
             android:name=".screens.EventDetailScreen"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.DetailActivityScreen">
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false">
+        <activity android:name=".screens.HomeScreenDrawer">
 
         </activity>
 
