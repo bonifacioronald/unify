@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,12 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mad_assignment2.MainActivity;
 import com.example.mad_assignment2.R;
 import com.example.mad_assignment2.data.CustomAdapter;
+import com.example.mad_assignment2.data.EventDBHelper;
 import com.example.mad_assignment2.data.VendorDBHelper;
+import com.example.mad_assignment2.models.Event;
+import com.example.mad_assignment2.models.Vendor;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class EventDetailScreen extends AppCompatActivity {
@@ -28,11 +31,15 @@ public class EventDetailScreen extends AppCompatActivity {
     RecyclerView recyclerView;
     Button backButton;
 
+    ImageButton previewImageButton;
+
     VendorDBHelper vendorDBHelper;
-    ArrayList<String> name, imageUrl,category;
-    ArrayList<Integer> buttonId;
+
+    EventDBHelper eventDBHelper;
+    ArrayList<String> name, description, category, imageUrl, rating, boothLocation;
 
     CustomAdapter customAdapter;
+
     @SuppressLint("MissingInflatedId")
     @Override
 
@@ -42,56 +49,80 @@ public class EventDetailScreen extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         vendorDBHelper = new VendorDBHelper(EventDetailScreen.this);
+        eventDBHelper = new EventDBHelper(EventDetailScreen.this);
         name = new ArrayList<>();
-        imageUrl = new ArrayList<>();
+        description = new ArrayList<>();
         category = new ArrayList<>();
-        buttonId = new ArrayList<>();
+        imageUrl = new ArrayList<>();
+        rating = new ArrayList<>();
+        boothLocation = new ArrayList<>();
 
-        storeVendorDataInArrays();
+        try {
+            storeVendorDataInArrays();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
 
-        customAdapter = new CustomAdapter(EventDetailScreen.this,name,imageUrl,category,buttonId);
+        customAdapter = new CustomAdapter(EventDetailScreen.this, name, description, category, imageUrl, rating, boothLocation);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(EventDetailScreen.this));
 
         ImageButton backImageButton = findViewById(R.id.backImageButton);
+
         backImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Define the target activity you want to navigate to
-                Intent intent = new Intent(EventDetailScreen.this, HomeScreen.class);
-                startActivity(intent);
+                finish();
             }
         });
 
         ImageButton previewImageButton = findViewById(R.id.previewImageButton);
+        Intent intent = getIntent();
+        int event_id = intent.getIntExtra("event_id", -1);
+
+        if (event_id == 1) {
+            previewImageButton.setImageResource(R.drawable.ongoing_event_card);
+        } else if (event_id == 2) {
+            previewImageButton.setImageResource(R.drawable.upcoming_event_card);
+        }
         previewImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Define the target activity you want to navigate to
                 Intent intent = new Intent(EventDetailScreen.this, EventPreviewScreen.class);
-                intent.putExtra("BUTTON_ID", buttonId);
                 startActivity(intent);
             }
         });
 
     }
 
-    void storeVendorDataInArrays(){
-        Cursor cursor = vendorDBHelper.getVendorData();
-        if(cursor.getCount() == 0){
-            Toast.makeText(this,"No Vendor Data", Toast.LENGTH_SHORT).show();
-        }else{
-            while (cursor.moveToNext()){
-                name.add(cursor.getString(0));
-                category.add(cursor.getString(4));
-                buttonId.add(cursor.getInt(5));
-            }
+    void storeVendorDataInArrays() throws ParseException {
+
+        Intent intent = getIntent();
+        int event_id = intent.getIntExtra("event_id", -1);
+
+
+        Event event = eventDBHelper.getEventFromId(event_id);
+        ArrayList<String> vendorIdForThatList = event.getVendorIdList();
+        for (String vendorId : vendorIdForThatList) {
+            Vendor vendor = vendorDBHelper.getVendorByName(vendorId);
+            name.add(vendor.getName());
+            description.add(vendor.getDescription());
+            category.add(vendor.getCategory());
+            imageUrl.add(vendor.getImageUrl());
+            rating.add(String.valueOf(vendor.getRating()));
+            boothLocation.add(String.valueOf(vendor.getBoothLocation()));
         }
-        Log.d("EventDetailScreen", "name: " + name.toString());
-        Log.d("EventDetailScreen", "category: " + category.toString());
-        Log.d("EventDetailScreen", "buttonId: " + buttonId.toString());
+
+
     }
 
+
 }
+
+
+
+
 
 
