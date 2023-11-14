@@ -100,13 +100,15 @@ public class BoothBookingPreviewScreen extends AppCompatActivity {
                     showUnsuccessfulDialog("Sorry! No more booth available.");
                 }
                 else  {
-                    eventDbHelper.addVendorToEvent(eventId, vendorName);
                     Vendor vendor =  vendorDBHelper.getVendorByName(vendorName);
 
                     //Assign booth number
                     int boothNumber = event.getVendorIdList().size() + 1;
                     vendor.setBoothLocation(boothNumber);
-                    vendor.setBoothDirectory("dic"+boothNumber);
+                    String boothDirectory = "dic"+boothNumber;
+                    vendor.setBoothDirectory(boothDirectory);
+                    vendorDBHelper.updateBoothDirectory(vendorName, boothDirectory);
+                    eventDbHelper.addVendorToEvent(eventId, vendorName);
                     showConfirmationDialog(event, vendor);
                 }
             }

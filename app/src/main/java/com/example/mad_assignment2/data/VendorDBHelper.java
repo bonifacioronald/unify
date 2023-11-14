@@ -106,12 +106,6 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getVendorData() {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        return cursor;
-    }
-
     public void clearDatabase() {
         SQLiteDatabase DB = this.getWritableDatabase();
         DB.delete(TABLE_NAME, null, null);
@@ -140,6 +134,8 @@ public class VendorDBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
     }
+
+
 
     //
 // SIGNUP, LOGIN, BOOKING METHODS
@@ -197,6 +193,25 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         db.close();
 
         return vendor;
+    }
+
+    public void updateBoothDirectory(String vendorName, String newBoothDirectory) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(BOOTH_DIRECTORY_FIELD, newBoothDirectory);
+
+        String selection = NAME_FIELD + " = ?";
+        String[] selectionArgs = { vendorName };
+
+        int rowsAffected = db.update(TABLE_NAME, values, selection, selectionArgs);
+        db.close();
+
+        if (rowsAffected > 0) {
+            Log.d("Database Update", "Booth directory updated successfully for vendor: " + vendorName);
+        } else {
+            Log.d("Database Update", "Failed to update booth directory for vendor: " + vendorName);
+        }
     }
 
     public Vendor getVendorByName(String name) {

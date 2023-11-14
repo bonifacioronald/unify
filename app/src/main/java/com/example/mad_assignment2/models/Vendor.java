@@ -94,7 +94,4 @@ public class Vendor {
     public void setBoothDirectory(String boothDirectory) {
         this.boothDirectory = boothDirectory;
     }
-    public int getButtonId() {
-        return buttonId;
-    }
 }

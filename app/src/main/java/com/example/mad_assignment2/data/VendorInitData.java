@@ -54,7 +54,7 @@ public class VendorInitData {
                 "kfc",
                 "Enjoy the world-famous fried chicken and delicious sides at KFC.",
                 "Food & Beverage",
-                "",
+                "https://upload.wikimedia.org/wikipedia/id/thumb/b/bf/KFC_logo.svg/800px-KFC_logo.svg.png",
                 4.7,
                 4,
                 "dic4");
@@ -65,7 +65,7 @@ public class VendorInitData {
                 "mcdonalds",
                 "Savor iconic burgers, fries, and more at McDonald's.",
                 "Food & Beverage",
-                "",
+                "https://d2vuyvo9qdtgo9.cloudfront.net/assets/ico/richlink.jpg",
                 4.5,
                 5,
                 "dic5");
@@ -76,7 +76,7 @@ public class VendorInitData {
                 "starbucks",
                 "Indulge in premium coffee and beverages at Starbucks.",
                 "Food & Beverage",
-                "",
+                "https://upload.wikimedia.org/wikipedia/id/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png",
                 4.8,
                 6,
                 "dic6");
