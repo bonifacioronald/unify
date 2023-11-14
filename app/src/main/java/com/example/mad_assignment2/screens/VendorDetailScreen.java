@@ -61,8 +61,6 @@ public class VendorDetailScreen extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(VendorDetailScreen.this, EventDetailScreen.class);
-                startActivity(intent);
                 finish();
             }
         });

@@ -115,7 +115,6 @@ public class EventDetailScreen extends AppCompatActivity {
             boothLocation.add(String.valueOf(vendor.getBoothLocation()));
         }
 
-
     }
 
 
