@@ -70,8 +70,7 @@ public class EventDetailScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Define the target activity you want to navigate to
-                Intent intent = new Intent(EventDetailScreen.this, HomeScreen.class);
-                startActivity(intent);
+                finish();
             }
         });
 
