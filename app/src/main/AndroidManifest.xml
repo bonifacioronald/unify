@@ -46,6 +46,9 @@
             android:name=".screens.HomeScreenDrawer"
             android:exported="false" />
         <activity
+            android:name=".screens.TestingOnly"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
 

@@ -257,6 +257,13 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getVendorDataForEvent(int eventId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + BOOTH_LOCATION_FIELD + " = ?";
+        String[] selectionArgs = {String.valueOf(eventId)};
+        return db.rawQuery(query, selectionArgs);
+    }
+
 
 
 }
