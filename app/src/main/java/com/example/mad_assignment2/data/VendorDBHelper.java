@@ -55,6 +55,11 @@ public class VendorDBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.setVersion(oldVersion);
+    }
+
     public Boolean initializeVendorData() throws Exception {
         SQLiteDatabase DB = this.getWritableDatabase();
 
