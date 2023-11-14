@@ -31,6 +31,8 @@ public class EventDetailScreen extends AppCompatActivity {
     RecyclerView recyclerView;
     Button backButton;
 
+    ImageButton previewImageButton;
+
     VendorDBHelper vendorDBHelper;
 
     EventDBHelper eventDBHelper;
@@ -66,6 +68,7 @@ public class EventDetailScreen extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(EventDetailScreen.this));
 
         ImageButton backImageButton = findViewById(R.id.backImageButton);
+
         backImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +78,14 @@ public class EventDetailScreen extends AppCompatActivity {
         });
 
         ImageButton previewImageButton = findViewById(R.id.previewImageButton);
+        Intent intent = getIntent();
+        int event_id = intent.getIntExtra("event_id", -1);
+
+        if (event_id == 1) {
+            previewImageButton.setImageResource(R.drawable.ongoing_event_card);
+        } else if (event_id == 2) {
+            previewImageButton.setImageResource(R.drawable.upcoming_event_card);
+        }
         previewImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +117,8 @@ public class EventDetailScreen extends AppCompatActivity {
 
 
     }
+
+
 }
 
 
