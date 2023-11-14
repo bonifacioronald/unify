@@ -111,10 +111,7 @@ public class EventDetailScreen extends AppCompatActivity {
             rating.add(String.valueOf(vendor.getRating()));
             boothLocation.add(String.valueOf(vendor.getBoothLocation()));
         }
-
     }
-
-
 }
 
 
