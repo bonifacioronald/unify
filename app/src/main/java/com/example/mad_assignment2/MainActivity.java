@@ -8,12 +8,9 @@ import android.util.Log;
 
 import com.example.mad_assignment2.data.EventDBHelper;
 import com.example.mad_assignment2.data.VendorDBHelper;
-import com.example.mad_assignment2.models.Event;
 import com.example.mad_assignment2.screens.EventDetailScreen;
 import com.example.mad_assignment2.screens.HomeScreen;
-import com.example.mad_assignment2.screens.SplashScreen;
-import com.example.mad_assignment2.screens.VendorBookingCalendarScreen;
-import com.example.mad_assignment2.screens.VendorLoginScreen;
+import com.example.mad_assignment2.screens.VendorDetailScreen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         super.onCreate(savedInstanceState);
-        Intent myIntent = new Intent(MainActivity.this, SplashScreen.class);
-
+        Intent myIntent = new Intent(MainActivity.this, HomeScreen.class);
         MainActivity.this.startActivity(myIntent);
     }
 }

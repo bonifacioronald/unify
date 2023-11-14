@@ -89,8 +89,8 @@ public class EventDetailScreen extends AppCompatActivity {
         previewImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Define the target activity you want to navigate to
                 Intent intent = new Intent(EventDetailScreen.this, EventPreviewScreen.class);
+                intent.putExtra("event_id",event_id);
                 startActivity(intent);
             }
         });
@@ -114,7 +114,6 @@ public class EventDetailScreen extends AppCompatActivity {
             rating.add(String.valueOf(vendor.getRating()));
             boothLocation.add(String.valueOf(vendor.getBoothLocation()));
         }
-
 
     }
 

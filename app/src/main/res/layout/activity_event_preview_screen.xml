@@ -83,10 +83,10 @@
     <Button
 
         android:id="@+id/eventDetailButton"
-        android:layout_width="274dp"
+        android:layout_width="match_parent"
         android:layout_height="53dp"
-        android:layout_marginStart="68dp"
-
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/auth_button"
         android:fontFamily="sans-serif-black"

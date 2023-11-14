@@ -75,6 +75,11 @@ public class EventDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
 
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.setVersion(oldVersion);
+    }
+
     public Boolean initializeEventData() throws Exception {
         SQLiteDatabase DB = this.getWritableDatabase();
 
