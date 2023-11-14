@@ -3,11 +3,14 @@ package com.example.mad_assignment2.screens;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewStub;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,8 +26,8 @@ public class HomeScreen extends AppCompatActivity {
     private  EditText searchEvent;
     private ImageView ongoingEventCard;
     private ImageView upcomingEventCard;
-    private ViewStub drawerStub;
-    private View drawerLayout;
+//    private ViewStub drawerStub;
+//    private View drawerLayout;
 
 
     @Override
@@ -38,11 +41,11 @@ public class HomeScreen extends AppCompatActivity {
         ongoingEventCard = findViewById(R.id.ongoingEventCard);
         upcomingEventCard = findViewById(R.id.upcomingEventCard);
 
+        Date today = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE, dd MMM");
+        String today_date = formatter.format(today);
 
-        ViewStub drawerStub = findViewById(R.id.drawerStub);
-        View drawerLayout = drawerStub.inflate();
-        drawerLayout.setVisibility(View.GONE);
-
+        dateTextView.setText(today_date);
 
         drawerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,16 +55,6 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-
-//        drawerButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (drawerLayout.getVisibility() == View.VISIBLE) {
-//                    drawerLayout.setVisibility(View.GONE); // Hide the drawer
-//                } else {
-//                    drawerLayout.setVisibility(View.VISIBLE);                }
-//            }
-//        });
 
         dateTextView.setOnClickListener(new View.OnClickListener() {
             @Override

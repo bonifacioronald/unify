@@ -89,6 +89,7 @@ public class EventPreviewScreen extends AppCompatActivity {
                 intent = new Intent(EventPreviewScreen.this, EventDetailScreen.class);
                 intent.putExtra("event_id",event_id);
 
+
                 startActivity(intent);
             }
         });

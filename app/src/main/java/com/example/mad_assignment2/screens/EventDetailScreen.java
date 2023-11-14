@@ -2,6 +2,8 @@ package com.example.mad_assignment2.screens;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,16 +29,18 @@ import java.util.ArrayList;
 public class EventDetailScreen extends AppCompatActivity {
 
     RecyclerView recyclerView;
+
     Button backButton;
 
     ImageView vendorImageView;
 
     ImageButton previewImageButton;
 
-    VendorDBHelper vendorDBHelper;
 
+    VendorDBHelper vendorDBHelper;
     EventDBHelper eventDBHelper;
     ArrayList<String> name, description, category, imageUrl, rating, boothLocation;
+    ImageButton eventCard;
 
     CustomAdapter customAdapter;
 
@@ -56,6 +60,7 @@ public class EventDetailScreen extends AppCompatActivity {
         imageUrl = new ArrayList<>();
         rating = new ArrayList<>();
         boothLocation = new ArrayList<>();
+        eventCard = findViewById(R.id.previewImageButton);
 
 
         try {
@@ -74,7 +79,6 @@ public class EventDetailScreen extends AppCompatActivity {
         backImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Define the target activity you want to navigate to
                 finish();
             }
         });
@@ -116,8 +120,8 @@ public class EventDetailScreen extends AppCompatActivity {
             rating.add(String.valueOf(vendor.getRating()));
             boothLocation.add(String.valueOf(vendor.getBoothLocation()));
         }
-
     }
+
 
     private void setDetailContent(String vendorName) throws ParseException {
 

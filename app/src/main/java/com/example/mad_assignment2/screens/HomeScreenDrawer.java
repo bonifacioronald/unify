@@ -16,7 +16,6 @@ public class HomeScreenDrawer extends AppCompatActivity{
     private Button calendarButton;
     private Button aboutButton;
     private Button bookingButton;
-    private View drawerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,6 @@ public class HomeScreenDrawer extends AppCompatActivity{
         calendarButton = findViewById(R.id.calendarButton);
         aboutButton = findViewById(R.id.aboutButton);
         bookingButton = findViewById(R.id.bookingButton);
-        drawerView = findViewById(R.id.drawerView);
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +37,7 @@ public class HomeScreenDrawer extends AppCompatActivity{
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("Calendar Button pressed!");
                 Intent intent = new Intent(HomeScreenDrawer.this, CalendarVisitorScreen.class);
                 startActivity(intent);
             }
@@ -48,7 +47,7 @@ public class HomeScreenDrawer extends AppCompatActivity{
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                System.out.println("About Button pressed!");
                 Intent intent = new Intent(HomeScreenDrawer.this, HomeScreen.class);
                 startActivity(intent);
             }
@@ -57,6 +56,7 @@ public class HomeScreenDrawer extends AppCompatActivity{
         bookingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("booking Button pressed!");
                 Intent intent = new Intent(HomeScreenDrawer.this, VendorLoginScreen.class);
                 startActivity(intent);
             }
