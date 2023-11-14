@@ -1,8 +1,5 @@
 package com.example.mad_assignment2.screens;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.mad_assignment2.R;
@@ -88,13 +84,13 @@ public class VendorDetailScreen extends AppCompatActivity {
 
             Glide.with(this)
                     .load(getResources().getIdentifier(vendor.getBoothDirectory(), "drawable", getPackageName()))
-                    .placeholder(R.drawable.dic01)
+                    .placeholder(R.drawable.dic1)
                     .error(R.drawable.taylors_logo)
                     .into(imageView1);
 
             Glide.with(this)
                     .load(vendor.getImageUrl()) // Provide the URL for the image
-                    .placeholder(R.drawable.dic01) // Optional: Placeholder image while loading
+                    .placeholder(R.drawable.dic1) // Optional: Placeholder image while loading
                     .error(R.drawable.taylors_logo) // Optional: Image to display in case of error
                     .into(imageView2);
 
