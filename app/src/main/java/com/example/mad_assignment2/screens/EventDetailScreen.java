@@ -3,6 +3,7 @@ package com.example.mad_assignment2.screens;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,12 +30,10 @@ import java.util.ArrayList;
 public class EventDetailScreen extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Button backButton;
-
     VendorDBHelper vendorDBHelper;
-
     EventDBHelper eventDBHelper;
     ArrayList<String> name, description, category, imageUrl, rating, boothLocation;
+    ImageButton eventCard;
 
     CustomAdapter customAdapter;
 
@@ -54,6 +53,25 @@ public class EventDetailScreen extends AppCompatActivity {
         imageUrl = new ArrayList<>();
         rating = new ArrayList<>();
         boothLocation = new ArrayList<>();
+        eventCard = findViewById(R.id.previewImageButton);
+
+
+        int event1 = getResources().getIdentifier("ongoing_event_card","drawable",getPackageName());
+        int event2 = getResources().getIdentifier("upcoming_event_card","drawable",getPackageName());
+        Intent intent = getIntent();
+        int event_id = intent.getIntExtra("event_id",-1);
+        String drawable_card ="";
+
+        if (event_id == 1){
+            drawable_card = "ongoing_event_card";
+        } else if (event_id == 2) {
+            drawable_card = "upcoming_event_card";
+        }
+
+        int card = getResources().getIdentifier(drawable_card,"drawable",getPackageName());
+
+
+        eventCard.setImageResource(card);
 
         try {
             storeVendorDataInArrays();
@@ -69,7 +87,6 @@ public class EventDetailScreen extends AppCompatActivity {
         backImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Define the target activity you want to navigate to
                 finish();
             }
         });
@@ -78,9 +95,7 @@ public class EventDetailScreen extends AppCompatActivity {
         previewImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Define the target activity you want to navigate to
-                Intent intent = new Intent(EventDetailScreen.this, EventPreviewScreen.class);
-                startActivity(intent);
+                finish();
             }
         });
 
