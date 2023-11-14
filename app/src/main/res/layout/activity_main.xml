@@ -19,22 +19,26 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="202dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="7dp"
+        android:id="@+id/VendorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="19dp"
         android:layout_marginEnd="95dp"
         android:layout_marginBottom="172dp"
         android:background="@drawable/title_box"
+        android:elevation="15dp"
+        android:text="Vendor Details"
+        android:textColor="@color/secondary"
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.851"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="1.0"
-        android:elevation="15dp"
-        />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
@@ -63,19 +67,7 @@
         />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Inside Scoop"
-        android:textColor="@color/secondary"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        android:elevation="15dp"/>
+
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -118,23 +110,25 @@
         android:layout_width="135dp"
         android:layout_height="148dp"
         android:layout_marginStart="21dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="234dp"
+        android:src="@drawable/insidescoop"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/VendorName"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
-        android:src="@drawable/insidescoop"
-        tools:visibility="visible"
-        />
+        tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/description"
         android:layout_width="209dp"
         android:layout_height="108dp"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="4dp"
         android:text="Inside Scoop is a popular ice \n cream maker known for its \n
 artisanal approach to crafting \n delectable frozen treats. Their \n
 innovative flavors and use of \n high-quality ingredients have \n made them a favorite among
@@ -144,11 +138,11 @@ innovative flavors and use of \n high-quality ingredients have \n made them a fa
         android:textColor="@color/text"
         android:textSize="11sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/VendorName"
         app:layout_constraintVertical_bias="0.0" />
 
     <RatingBar
