@@ -106,6 +106,7 @@ public class BoothBookingPreviewScreen extends AppCompatActivity {
                     //Assign booth number
                     int boothNumber = event.getVendorIdList().size() + 1;
                     vendor.setBoothLocation(boothNumber);
+                    vendor.setBoothDirectory("dic"+boothNumber);
                     showConfirmationDialog(event, vendor);
                 }
             }
