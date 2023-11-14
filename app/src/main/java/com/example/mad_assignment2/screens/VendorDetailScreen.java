@@ -1,6 +1,8 @@
 package com.example.mad_assignment2.screens;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.mad_assignment2.R;
@@ -18,6 +21,7 @@ import com.example.mad_assignment2.models.Vendor;
 public class VendorDetailScreen extends AppCompatActivity {
     private RatingBar ratingBar;
     private TextView averageRatingView;
+    public int buttonId;
     private VendorDBHelper vendorDBHelper;
 
     @Override
@@ -98,6 +102,8 @@ public class VendorDetailScreen extends AppCompatActivity {
 
             titleTextView.setText(vendor.getName());
             descriptionTextView.setText(vendor.getDescription());
+
+
 
             // Set rating and average rating view
 //          ratingBar.setRating((float) vendor.getRating());
