@@ -43,10 +43,6 @@ public class EventPreviewScreen extends AppCompatActivity {
         eventDBHelper = new EventDBHelper(this);
         event_preview = findViewById(R.id.event_preview);
 
-
-
-
-
         Intent intent = getIntent();
         int event_id = intent.getIntExtra("event_id",-1);
         eventDBHelper.logEventData();

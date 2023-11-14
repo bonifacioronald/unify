@@ -28,13 +28,21 @@ public class VendorBookingCalendarScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_booking_calendar_screen);
 
-        db = new EventDBHelper(this);
+//        db = new EventDBHelper(this);
 
         Intent intent = getIntent();
         vendorName = intent.getStringExtra("vendorname");
 
         // Initialize all date buttons
         initDateButtons();
+
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Create a single OnClickListener
         View.OnClickListener dateButtonClickListener = new View.OnClickListener() {
