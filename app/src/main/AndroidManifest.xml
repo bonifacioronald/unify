@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,13 +13,10 @@
         android:theme="@style/Theme.Mad_assignment2"
         tools:targetApi="31">
         <activity
-            android:name=".screens.SplashScreen"
-            android:exported="false" />
-        <activity
             android:name=".screens.BoothBookingPreviewScreen"
             android:exported="false" />
         <activity
-            android:name=".screens.EventPreviewScreen"
+             android:name=".screens.EventPreviewScreen"
             android:exported="false" />
         <activity
             android:name=".screens.VendorSignUpScreen"
@@ -34,31 +31,30 @@
             android:name=".screens.VendorBookingCalendarScreen"
             android:exported="false" />
         <activity
-            android:name=".screens.VendorDetailsScreen"
+            android:name=".screens.VendorDetailScreen"
             android:exported="false" />
         <activity
             android:name=".screens.HomeScreen"
             android:exported="false" />
         <activity
             android:name=".screens.EventDetailScreen"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
-            android:name=".screens.HomeScreenDrawer"
-            android:exported="false" />
-        <activity
-            android:name=".screens.TestingOnly"
-            android:exported="false" />
+            android:name=".screens.SplashScreen"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".screens.HomeScreenDrawer">
+
+        </activity>
+
     </application>
 
 </manifest>
