@@ -38,14 +38,10 @@
             android:exported="false" />
         <activity
             android:name=".screens.EventDetailScreen"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
         <activity
-            android:name=".screens.TestingOnly"
-            android:exported="false" />
-        <activity
-            android:name=".screens.TestingOnly"
-            android:exported="false" />
+            android:name=".screens.SplashScreen"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
