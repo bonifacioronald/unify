@@ -2,6 +2,7 @@ package com.example.mad_assignment2.data;
 
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,7 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad_assignment2.R;
 import com.example.mad_assignment2.screens.EventPreviewScreen;
-import com.example.mad_assignment2.screens.TestingOnly;
+import com.example.mad_assignment2.screens.VendorDetailsScreen;
+
 
 import java.util.ArrayList;
 
@@ -52,7 +54,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.vendor_name_txt.setText(String.valueOf(name.get(position)));
         holder.imageUrl_txt.setText(String.valueOf(category.get(position)));
@@ -60,7 +62,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, TestingOnly.class);
+                Intent intent = new Intent(context, VendorDetailsScreen.class);
                 intent.putExtra("CLICKED_VENDOR_NAME", String.valueOf(name.get(position)));
                 context.startActivity(intent);
 
