@@ -14,12 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mad_assignment2.MainActivity;
 import com.example.mad_assignment2.R;
 import com.example.mad_assignment2.data.CustomAdapter;
+import com.example.mad_assignment2.data.EventDBHelper;
 import com.example.mad_assignment2.data.VendorDBHelper;
+import com.example.mad_assignment2.models.Event;
+import com.example.mad_assignment2.models.Vendor;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class EventDetailScreen extends AppCompatActivity {
@@ -28,9 +32,12 @@ public class EventDetailScreen extends AppCompatActivity {
     Button backButton;
 
     VendorDBHelper vendorDBHelper;
-    ArrayList<String> name, imageUrl;
+
+    EventDBHelper eventDBHelper;
+    ArrayList<String> name, description, category, imageUrl, rating, boothLocation;
 
     CustomAdapter customAdapter;
+
     @SuppressLint("MissingInflatedId")
     @Override
 
@@ -40,12 +47,21 @@ public class EventDetailScreen extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         vendorDBHelper = new VendorDBHelper(EventDetailScreen.this);
+        eventDBHelper = new EventDBHelper(EventDetailScreen.this);
         name = new ArrayList<>();
+        description = new ArrayList<>();
+        category = new ArrayList<>();
         imageUrl = new ArrayList<>();
+        rating = new ArrayList<>();
+        boothLocation = new ArrayList<>();
 
-        storeVendorDataInArrays();
+        try {
+            storeVendorDataInArrays();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
 
-        customAdapter = new CustomAdapter(EventDetailScreen.this,name,imageUrl);
+        customAdapter = new CustomAdapter(EventDetailScreen.this, name, description, category, imageUrl, rating, boothLocation);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(EventDetailScreen.this));
 
@@ -71,20 +87,30 @@ public class EventDetailScreen extends AppCompatActivity {
 
     }
 
-    void storeVendorDataInArrays(){
-        Cursor cursor = vendorDBHelper.getVendorData();
-        if(cursor.getCount() == 0){
-            Toast.makeText(this,"No Vendor Data", Toast.LENGTH_SHORT).show();
-        }else{
-            while (cursor.moveToNext()){
-                name.add(cursor.getString(0));
-                imageUrl.add(cursor.getString(4));
-            }
+    void storeVendorDataInArrays() throws ParseException {
+
+        Intent intent = getIntent();
+        int event_id = intent.getIntExtra("event_id", -1);
+
+
+        Event event = eventDBHelper.getEventFromId(event_id);
+        ArrayList<String> vendorIdForThatList = event.getVendorIdList();
+        for (String vendorId : vendorIdForThatList) {
+            Vendor vendor = vendorDBHelper.getVendorByName(vendorId);
+            name.add(vendor.getName());
+            description.add(vendor.getDescription());
+            category.add(vendor.getCategory());
+            imageUrl.add(vendor.getImageUrl());
+            rating.add(String.valueOf(vendor.getRating()));
+            boothLocation.add(String.valueOf(vendor.getBoothLocation()));
         }
+
+
     }
-
-
-
 }
+
+
+
+
 
 

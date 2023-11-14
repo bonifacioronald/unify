@@ -65,8 +65,9 @@ public class EventPreviewScreen extends AppCompatActivity {
         eventDetailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(EventPreviewScreen.this, .class);
-//                startActivity(intent);
+                Intent intent = new Intent(EventPreviewScreen.this, EventDetailScreen.class);
+                intent.putExtra("event_id", event_id);
+                startActivity(intent);
             }
         });
 
