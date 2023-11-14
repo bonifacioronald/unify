@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.example.mad_assignment2.R;
 
-public class TestingOnly extends AppCompatActivity {
+public class VendorDetailsScreen extends AppCompatActivity {
 
     TextView title_VendorName, title_description;
 
