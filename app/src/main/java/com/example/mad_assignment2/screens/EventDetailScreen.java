@@ -2,26 +2,24 @@ package com.example.mad_assignment2.screens;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mad_assignment2.MainActivity;
+import com.bumptech.glide.Glide;
 import com.example.mad_assignment2.R;
 import com.example.mad_assignment2.data.CustomAdapter;
 import com.example.mad_assignment2.data.EventDBHelper;
 import com.example.mad_assignment2.data.VendorDBHelper;
 import com.example.mad_assignment2.models.Event;
 import com.example.mad_assignment2.models.Vendor;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -30,6 +28,8 @@ public class EventDetailScreen extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Button backButton;
+
+    ImageView vendorImageView;
 
     ImageButton previewImageButton;
 
@@ -57,11 +57,13 @@ public class EventDetailScreen extends AppCompatActivity {
         rating = new ArrayList<>();
         boothLocation = new ArrayList<>();
 
+
         try {
             storeVendorDataInArrays();
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+
 
         customAdapter = new CustomAdapter(EventDetailScreen.this, name, description, category, imageUrl, rating, boothLocation);
         recyclerView.setAdapter(customAdapter);
@@ -90,7 +92,7 @@ public class EventDetailScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EventDetailScreen.this, EventPreviewScreen.class);
-                intent.putExtra("event_id",event_id);
+                intent.putExtra("event_id", event_id);
                 startActivity(intent);
             }
         });
@@ -110,15 +112,46 @@ public class EventDetailScreen extends AppCompatActivity {
             name.add(vendor.getName());
             description.add(vendor.getDescription());
             category.add(vendor.getCategory());
-            imageUrl.add(vendor.getImageUrl());
+            imageUrl.add(String.valueOf(vendor.getImageUrl()));
             rating.add(String.valueOf(vendor.getRating()));
             boothLocation.add(String.valueOf(vendor.getBoothLocation()));
         }
 
     }
 
+    private void setDetailContent(String vendorName) throws ParseException {
 
-}
+
+        ImageView imageView2 = findViewById(R.id.imageView2);
+
+
+
+            Vendor vendor = vendorDBHelper.getVendorByName(vendorName);
+
+
+            if (vendor != null) {
+
+                imageUrl.add(String.valueOf(vendor.getImageUrl()));
+
+                Log.d("EventDetailScreen", "Image URL Resource Name: " + imageUrl);
+
+
+                int imageUrlResourceId = getResources().getIdentifier(String.valueOf(imageUrl), "drawable", getPackageName());
+
+                Log.d("EventDetailScreen", "Image URL Resource ID: " + imageUrlResourceId);
+
+
+                Glide.with(this)
+                        .load(vendor.getImageUrl()) // Provide the URL for the image
+                        .placeholder(R.drawable.loading_indicator) // Optional: Placeholder image while loading
+                        .error(R.drawable.loading_indicator) // Optional: Image to display in case of error
+                        .into(imageView2);
+
+
+            }
+        }
+    }
+
 
 
 
