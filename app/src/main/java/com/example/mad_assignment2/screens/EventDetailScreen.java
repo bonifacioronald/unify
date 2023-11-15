@@ -121,40 +121,9 @@ public class EventDetailScreen extends AppCompatActivity {
             boothLocation.add(String.valueOf(vendor.getBoothLocation()));
         }
     }
+}
 
 
-    private void setDetailContent(String vendorName) throws ParseException {
-
-
-        ImageView imageView2 = findViewById(R.id.imageView2);
-
-
-
-            Vendor vendor = vendorDBHelper.getVendorByName(vendorName);
-
-
-            if (vendor != null) {
-
-                imageUrl.add(String.valueOf(vendor.getImageUrl()));
-
-                Log.d("EventDetailScreen", "Image URL Resource Name: " + imageUrl);
-
-
-                int imageUrlResourceId = getResources().getIdentifier(String.valueOf(imageUrl), "drawable", getPackageName());
-
-                Log.d("EventDetailScreen", "Image URL Resource ID: " + imageUrlResourceId);
-
-
-                Glide.with(this)
-                        .load(vendor.getImageUrl()) // Provide the URL for the image
-                        .placeholder(R.drawable.loading_indicator) // Optional: Placeholder image while loading
-                        .error(R.drawable.loading_indicator) // Optional: Image to display in case of error
-                        .into(imageView2);
-
-
-            }
-        }
-    }
 
 
 

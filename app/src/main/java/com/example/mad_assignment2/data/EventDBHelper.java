@@ -126,13 +126,6 @@ public class EventDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getEventData() {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        // Check if the event with the given ID exists
-        Cursor cursor = DB.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        return cursor;
-    }
-
     @SuppressLint("Range")
     public Event getEventFromId(int eventId) throws ParseException {
         SQLiteDatabase DB = this.getReadableDatabase();

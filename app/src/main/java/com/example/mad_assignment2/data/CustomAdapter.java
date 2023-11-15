@@ -55,7 +55,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         // Use Glide to load the image
         Glide.with(context)
-                .load(imageUrl.get(position)) // Assuming imageUrl is a valid resource identifier
+                .load(imageUrl.get(position))
+                .placeholder(R.drawable.loading_indicator) // Optional: Placeholder image while loading
+                .error(R.drawable.taylors_logo)// Assuming imageUrl is a valid resource identifier
                 .into(holder.imageView2);
 
         holder.eventDetailsLayout.setOnClickListener(view -> {

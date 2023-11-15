@@ -85,13 +85,13 @@ public class VendorDetailScreen extends AppCompatActivity {
             Glide.with(this)
                     .load(getResources().getIdentifier(vendor.getBoothDirectory(), "drawable", getPackageName()))
                     .placeholder(R.drawable.loading_indicator)
-                    .error(R.drawable.loading_indicator)
+                    .error(R.drawable.taylors_logo)
                     .into(imageView1);
 
             Glide.with(this)
                     .load(vendor.getImageUrl()) // Provide the URL for the image
                     .placeholder(R.drawable.loading_indicator) // Optional: Placeholder image while loading
-                    .error(R.drawable.loading_indicator) // Optional: Image to display in case of error
+                    .error(R.drawable.taylors_logo) // Optional: Image to display in case of error
                     .into(imageView2);
 
             titleTextView.setText(vendor.getName());
