@@ -52,8 +52,8 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="140dp"
-            android:layout_marginStart="8dp"
             android:text="Taylor's University, Subang Jaya"
             android:textColor="#79333333"
             android:textSize="14dp"
@@ -61,7 +61,7 @@
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+        <ImageView
         android:id="@+id/imageView"
         android:layout_width="29dp"
         android:layout_height="28dp"
