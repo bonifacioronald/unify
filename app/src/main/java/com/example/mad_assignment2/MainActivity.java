@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         EventDBHelper eventDb = new EventDBHelper(this);
         VendorDBHelper vendorDb = new VendorDBHelper(this);
-        eventDb.clearDatabase();
-        vendorDb.clearDatabase();
+        //eventDb.clearDatabase();
+        //vendorDb.clearDatabase();
         try {
             eventDb.initializeEventData();
             vendorDb.initializeVendorData();
