@@ -22,8 +22,7 @@ public class HomeScreen extends AppCompatActivity {
 
 
     private ImageButton drawerButton;
-    private TextView dateTextView;
-    private  EditText searchEvent;
+    private TextView dateTextView, searchEvent;
     private ImageView ongoingEventCard;
     private ImageView upcomingEventCard;
 //    private ViewStub drawerStub;
